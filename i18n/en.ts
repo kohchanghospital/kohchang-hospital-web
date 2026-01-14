@@ -9,4 +9,6 @@ export default {
     news: 'News & Public Relations',
     procurement: 'Procurement',
     knowledge: 'Health Knowledge',
+    footer_about: 'Providing services with heart and care with standards.',
+    footer_contact: 'Contact Us',
 };

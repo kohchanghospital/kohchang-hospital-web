@@ -1,10 +1,9 @@
-import { Navbar } from '../components/Navbar';
+import { Navbar } from '../../components/Navbar';
 
 
 export default function KnowledgePage() {
     return (
         <div>
-            <Navbar />
             <section className="mx-auto max-w-6xl px-6 py-12">
                 <h2 className="mb-6 text-3xl font-bold">สาระความรู้</h2>
                 <div className="grid gap-6 md:grid-cols-3">

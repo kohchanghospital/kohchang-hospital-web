@@ -9,4 +9,7 @@ export default {
     news: 'ข่าวสาร / ประชาสัมพันธ์',
     procurement: 'จัดซื้อจัดจ้าง',
     knowledge: 'สาระความรู้',
+    footer_about: 'ให้บริการด้วยหัวใจ ดูแลด้วยมาตรฐาน',
+    footer_contact: 'ติดต่อเรา',
+
 };

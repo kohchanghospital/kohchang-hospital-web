@@ -1,11 +1,10 @@
-import { Navbar } from '../components/Navbar';
+import { Navbar } from '../../components/Navbar';
 import Link from 'next/link';
 
 
 export default function AnnouncementsPage() {
     return (
         <div>
-            <Navbar />
             <section className="mx-auto max-w-6xl px-6 py-12">
                 <h2 className="mb-6 text-3xl font-bold">ประกาศ</h2>
 

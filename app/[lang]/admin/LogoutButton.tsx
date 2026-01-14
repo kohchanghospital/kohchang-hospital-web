@@ -1,6 +1,6 @@
 'use client';
 
-import api from '../lib/api';
+import api from '../../lib/api';
 import { useRouter } from 'next/navigation';
 
 export default function LogoutButton() {

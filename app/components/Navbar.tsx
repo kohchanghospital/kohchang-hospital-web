@@ -2,10 +2,19 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useLang } from '@/context/LanguageContext';
+import { usePathname } from 'next/navigation';
+import { languages, Lang } from '../../i18n';
+import { Icons } from '../icons/icons';
 
-export function Navbar() {
-    const { t, lang, setLang } = useLang();
+export function Navbar({ lang }: { lang: Lang }) {
+    const t = languages[lang];
+
+    const pathname = usePathname();
+    const toggleLang: Lang = lang === 'th' ? 'en' : 'th';
+
+    // แปลง path เดิมเป็นอีกภาษา
+    const switchLangPath = pathname.replace(`/${lang}`, `/${toggleLang}`);
+
     const [mobileOpen, setMobileOpen] = useState(false);
     const [aboutOpen, setAboutOpen] = useState(false);
     const [announceOpen, setAnnounceOpen] = useState(false);
@@ -13,71 +22,77 @@ export function Navbar() {
     return (
         <nav className="bg-white shadow">
             <div className="mx-auto max-w-7xl px-6 py-4">
+
                 <div className="flex items-center justify-between">
                     <h1 className="text-xl font-bold text-blue-700">
                         {t.hos_name}
                     </h1>
-                    {/* ปุ่มมือถือ */}
-                    <button
-                        className="md:hidden"
-                        onClick={() => setMobileOpen(!mobileOpen)}
-                    >
-                        ☰
-                    </button>
-                    {/* เมนู Desktop */}
+
+                    {/* Desktop */}
                     <ul className="hidden items-center gap-6 text-gray-700 md:flex">
-                        <li><Link href="/">Home</Link></li>
+                        <li><Link href={`/${lang}`}>{t.home}</Link></li>
+
                         {/* เกี่ยวกับเรา */}
                         <li className="group relative">
                             <div className="flex items-center gap-1 cursor-pointer">
-                                <Link href="/about">{t.about}</Link>
+                                <Link href={`/${lang}/about`}>{t.about}</Link>
                                 <Arrow />
                             </div>
                             <Dropdown>
-                                <DropdownItem href="/about/history">{t.history}</DropdownItem>
-                                <DropdownItem href="/about/vision">{t.vision}</DropdownItem>
-                                <DropdownItem href="/about/calendar">{t.calendar}</DropdownItem>
+                                <DropdownItem href={`/${lang}/about/history`}>{t.history}</DropdownItem>
+                                <DropdownItem href={`/${lang}/about/vision`}>{t.vision}</DropdownItem>
+                                <DropdownItem href={`/${lang}/about/calendar`}>{t.calendar}</DropdownItem>
                             </Dropdown>
                         </li>
+
                         {/* ประกาศ */}
                         <li className="group relative">
                             <div className="flex items-center gap-1 cursor-pointer">
-                                <Link href="/announcements">{t.announcements}</Link>
+                                <Link href={`/${lang}/announcements`}>{t.announcements}</Link>
                                 <Arrow />
                             </div>
                             <Dropdown>
-                                <DropdownItem href="/announcements/news">
+                                <DropdownItem href={`/${lang}/announcements/news`}>
                                     {t.news}
                                 </DropdownItem>
-                                <DropdownItem href="/announcements/procurement">
+                                <DropdownItem href={`/${lang}/announcements/procurement`}>
                                     {t.procurement}
                                 </DropdownItem>
                             </Dropdown>
                         </li>
-                        <li><Link href="/knowledge">{t.knowledge}</Link></li>
+
+                        <li>
+                            <Link href={`/${lang}/knowledge`}>{t.knowledge}</Link>
+                        </li>
                     </ul>
+
                     {/* ปุ่มเปลี่ยนภาษา */}
-                    <button
-                        onClick={() => setLang(lang === 'th' ? 'en' : 'th')}
+                    <Link
+                        href={switchLangPath}
                         className="flex items-center gap-2 rounded border px-3 py-1 text-sm hover:bg-gray-100"
                     >
-                        {lang === 'th' ? (
-                            <>
-                                🇹🇭 <span>TH</span>
-                            </>
-                        ) : (
-                            <>
-                                🇬🇧 <span>EN</span>
-                            </>
-                        )}
-                    </button>
+                        <Icons.OutlineGlobe className="text-xl text-gray-600" />
+                        {lang === 'th' ? 'TH' : 'EN'}
+                    </Link>
+
+                    {/* ปุ่มมือถือ */}
+                    <button
+                        className="md:hidden"
+                        onClick={() => setMobileOpen(!mobileOpen)}
+                    >☰</button>
                 </div>
-                {/* เมนู Mobile */}
+
+                {/* Mobile */}
                 {mobileOpen && (
                     <div className="mt-4 space-y-3 md:hidden">
-                        <Link href="/" className="block rounded px-2 py-2 hover:bg-gray-100">
+
+                        <Link
+                            href={`/${lang}`}
+                            className="block rounded px-2 py-2 hover:bg-gray-100"
+                        >
                             {t.home}
                         </Link>
+
                         {/* เกี่ยวกับเรา */}
                         <button
                             onClick={() => setAboutOpen(!aboutOpen)}
@@ -86,19 +101,21 @@ export function Navbar() {
                             <span>{t.about}</span>
                             <Arrow />
                         </button>
+
                         {aboutOpen && (
                             <div className="ml-4 space-y-2">
-                                <Link href="/about/history" className="block py-1">
+                                <Link href={`/${lang}/about/history`} className="block py-1">
                                     {t.history}
                                 </Link>
-                                <Link href="/about/vision" className="block py-1">
+                                <Link href={`/${lang}/about/vision`} className="block py-1">
                                     {t.vision}
                                 </Link>
-                                <Link href="/about/calendar" className="block py-1">
+                                <Link href={`/${lang}/about/calendar`} className="block py-1">
                                     {t.calendar}
                                 </Link>
                             </div>
                         )}
+
                         {/* ประกาศ */}
                         <button
                             onClick={() => setAnnounceOpen(!announceOpen)}
@@ -107,19 +124,28 @@ export function Navbar() {
                             <span>{t.announcements}</span>
                             <Arrow />
                         </button>
+
                         {announceOpen && (
                             <div className="ml-4 space-y-2">
-                                <Link href="/announcements/news" className="block py-1">
+                                <Link href={`/${lang}/announcements/news`} className="block py-1">
                                     {t.news}
                                 </Link>
-                                <Link href="/announcements/procurement" className="block py-1">
+                                <Link
+                                    href={`/${lang}/announcements/procurement`}
+                                    className="block py-1"
+                                >
                                     {t.procurement}
                                 </Link>
                             </div>
                         )}
-                        <Link href="/knowledge" className="block rounded px-2 py-2 hover:bg-gray-100">
+
+                        <Link
+                            href={`/${lang}/knowledge`}
+                            className="block rounded px-2 py-2 hover:bg-gray-100"
+                        >
                             {t.knowledge}
                         </Link>
+
                     </div>
                 )}
             </div>
@@ -127,10 +153,11 @@ export function Navbar() {
     );
 }
 
-function Arrow() {
+function Arrow({ rotate = false }: { rotate?: boolean }) {
     return (
         <svg
-            className="h-4 w-4 text-gray-500"
+            className={`h-4 w-4 text-gray-500 transition-transform ${rotate ? 'rotate-180' : ''
+                }`}
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
@@ -149,13 +176,18 @@ function Dropdown({ children }: { children: React.ReactNode }) {
     );
 }
 
-function DropdownItem({ href, children }: any) {
+function DropdownItem({
+    href,
+    children,
+}: {
+    href: string;
+    children: React.ReactNode;
+}) {
     return (
         <li>
-            <Link href={href} className="hover:text-blue-600">
+            <Link href={href} className="block hover:text-blue-600">
                 {children}
             </Link>
         </li>
     );
 }
-
