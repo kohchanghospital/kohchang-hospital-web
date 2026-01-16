@@ -1,0 +1,46 @@
+import { languages, Lang } from '@/i18n'
+import CalendarClient from '@/app/components/CalendarClient'
+
+export default async function VehiclePage({ params }: { params: { lang: Lang } | Promise<{ lang: Lang }> }) {
+    const t = languages[(await params).lang]
+
+    const events = [
+        {
+            id: '1',
+            title: 'ตรวจเยี่ยมหน่วย',
+            detail: '123456789',
+            start: '2026-01-15',
+            time: '08:30 - 16:30',
+        },
+        {
+            id: '2',
+            title: '1.สสจ.ตราด - ประชุมแนวทางตรวจสอบเวชระเบียน + รับ - ส่งเอกสาร\n2.รพ.ตราด - รับ ส่ง อุปกรณ์ส่งนึ่ง อบแก๊ส - แผนกจ่ายกลาง รพ.ตราด + แผนกซักฟอกรับเสื้อผ้าคนไข้ + ส่งเลือด\n3.รพ.แหลมงอบ - ส่งเลือด',
+            start: '2026-01-15',
+        },
+        {
+            id: '3',
+            title: '8:30-16:30 ตรวจเยี่ยมหน่วย',
+            start: '2026-01-15',
+        },
+        {
+            id: '4',
+            title: '13:00-16:30 ประชุม',
+            start: '2026-01-15',
+        },
+        {
+            id: '5 ',
+            title: '8:30-16:30 ตรวจเยี่ยมหน่วย',
+            start: '2026-01-15',
+        },
+    ]
+
+    return (
+        <section className="mx-auto max-w-4xl px-6 py-12">
+            <h1 className="mb-4 text-3xl font-bold">{t.vehicle_calendar}</h1>
+
+            <div className="rounded-xl p-6 shadow-xl">
+                <CalendarClient events={events} lang={(await params).lang} base="about/vehicle" />
+            </div>
+        </section>
+    )
+}

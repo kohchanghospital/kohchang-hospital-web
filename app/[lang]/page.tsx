@@ -5,9 +5,9 @@ export default async function HomePage({ params }: { params: { lang: Lang } | Pr
     const t = languages[(await params).lang];
     return (
         <div>
-            <header className="bg-blue-50 py-30 text-center">
+            <header className="bg-blue-50 py-60 text-center">
                 <h2 className="text-3xl font-bold text-blue-800">{t.hos_name}</h2>
-                <p className="mt-4 text-gray-600">ให้บริการด้วยหัวใจ ดูแลด้วยมาตรฐาน</p>
+                <p className="mt-4 text-gray-600">{t.sub_about}</p>
             </header>
             <section className="mx-auto max-w-6xl px-6 py-12">
                 <h3 className="mb-6 text-2xl font-semibold">{t.news}</h3>

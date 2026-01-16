@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { languages, Lang } from '../../i18n';
+import { Icons } from '../icons/icons';
 
 export function Footer({ lang }: { lang: Lang }) {
     const t = languages[lang];
@@ -13,30 +14,32 @@ export function Footer({ lang }: { lang: Lang }) {
 
                     {/* ข้อมูลโรงพยาบาล */}
                     <div>
-                        <h3 className="mb-3 text-lg font-semibold text-blue-700">
-                            {t.hos_name}
-                        </h3>
+                        <Link href={`/${lang}/`} className="hover:text-[rgb(var(--color-primary-light))]">
+                            <h3 className="mb-3 text-2xl font-semibold text-primary-dark">
+                                {t.hos_name}
+                            </h3>
+                        </Link>
                         <p className="text-sm leading-relaxed">
-                            {t.footer_about}
+                            {t.sub_about}
                         </p>
                     </div>
 
                     {/* เมนู */}
                     <div>
-                        <h4 className="mb-3 font-semibold">{t.home}</h4>
-                        <ul className="space-y-2 text-sm" style={{ listStyleType: 'disc' }}>
+                        <h4 className="mb-3 font-semibold"><Link href={`/${lang}/`} className="hover:text-[rgb(var(--color-primary-light))]">{t.home}</Link></h4>
+                        <ul className="space-y-2 text-sm pl-4" style={{ listStyleType: 'disc' }}>
                             <li>
-                                <Link href={`/${lang}/about`} className="hover:text-blue-600">
+                                <Link href={`/${lang}/about`} className="hover:text-[rgb(var(--color-primary-light))]">
                                     {t.about}
                                 </Link>
                             </li>
                             <li>
-                                <Link href={`/${lang}/announcements`} className="hover:text-blue-600">
+                                <Link href={`/${lang}/announcements`} className="hover:text-[rgb(var(--color-primary-light))]">
                                     {t.announcements}
                                 </Link>
                             </li>
                             <li>
-                                <Link href={`/${lang}/knowledge`} className="hover:text-blue-600">
+                                <Link href={`/${lang}/knowledge`} className="hover:text-[rgb(var(--color-primary-light))]">
                                     {t.knowledge}
                                 </Link>
                             </li>
@@ -49,9 +52,10 @@ export function Footer({ lang }: { lang: Lang }) {
                             {t.footer_contact}
                         </h4>
                         <ul className="space-y-2 text-sm">
-                            <li>📍 21/1 หมู่ที่ 2 ต.เกาะช้าง อ.เกาะช้าง จ.ตราด 23170</li>
-                            <li><i className="bi bi-telephone-fill"></i> 039-586-131</li>
-                            <li><i className="bi bi-envelope-fill"></i> kohchan7@kohchanghospital.go.th</li>
+                            <li><Icons.MapPinFill className="inline mr-2" /> {t.address}</li>
+                            <li><Icons.PhoneAlt className="inline mr-2" /> <a href="tel:+6639586131" className="hover:text-[rgb(var(--color-primary-light))]">039-586-131</a> / <a href="tel:+6639586160" className="hover:text-[rgb(var(--color-primary-light))]">039-586-160</a></li>
+                            <li><Icons.Gmail className="inline mr-2" /> <a href="mailto:kohchanghealth123@gmail.com" className="hover:text-[rgb(var(--color-primary-light))]">kohchanghealth123@gmail.com</a></li>
+                            <li><Icons.Facebook className="inline mr-2" /> <a href="https://www.facebook.com/kochang.hospital/" target="_blank" className="hover:text-[rgb(var(--color-primary-light))]">/kochang.hospital</a></li>
                         </ul>
                     </div>
 

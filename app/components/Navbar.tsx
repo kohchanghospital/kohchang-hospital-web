@@ -20,36 +20,39 @@ export function Navbar({ lang }: { lang: Lang }) {
     const [announceOpen, setAnnounceOpen] = useState(false);
 
     return (
-        <nav className="bg-white shadow">
+        <nav className="bg-white shadow sticky top-0 z-50
+                    bg-white/90 backdrop-blur
+                    border-b border-gray-200">
             <div className="mx-auto max-w-7xl px-6 py-4">
-
                 <div className="flex items-center justify-between">
-                    <h1 className="text-xl font-bold text-blue-700">
-                        {t.hos_name}
-                    </h1>
-
+                    <Link className="hover:text-primary-light]" href={`/${lang}`}>
+                        <h1 className="text-2xl font-bold text-primary-dark">
+                            {t.hos_name}
+                        </h1>
+                    </Link>
                     {/* Desktop */}
                     <ul className="hidden items-center gap-6 text-gray-700 md:flex">
-                        <li><Link href={`/${lang}`}>{t.home}</Link></li>
+                        <li><Link className="hover:text-[rgb(var(--color-primary-light))]" href={`/${lang}`}>{t.home}</Link></li>
 
                         {/* เกี่ยวกับเรา */}
                         <li className="group relative">
-                            <div className="flex items-center gap-1 cursor-pointer">
+                            <div className="flex items-center gap-1 cursor-pointer text-gray-700 hover:text-[rgb(var(--color-primary-light))]">
                                 <Link href={`/${lang}/about`}>{t.about}</Link>
-                                <Arrow />
+                                <Arrow className="transition-transform group-hover:rotate-180 group-hover:text-[rgb(var(--color-primary-light))]" />
                             </div>
                             <Dropdown>
-                                <DropdownItem href={`/${lang}/about/history`}>{t.history}</DropdownItem>
-                                <DropdownItem href={`/${lang}/about/vision`}>{t.vision}</DropdownItem>
-                                <DropdownItem href={`/${lang}/about/calendar`}>{t.calendar}</DropdownItem>
+                                <DropdownItem href={`/${lang}/about/history`}>{t.history_hos}</DropdownItem>
+                                <DropdownItem href={`/${lang}/about/vision`}>{t.vision_head}</DropdownItem>
+                                <DropdownItem href={`/${lang}/about/calendar`}>{t.activity_calendar}</DropdownItem>
+                                <DropdownItem href={`/${lang}/about/vehicle`}>{t.vehicle_calendar}</DropdownItem>
                             </Dropdown>
                         </li>
 
                         {/* ประกาศ */}
                         <li className="group relative">
-                            <div className="flex items-center gap-1 cursor-pointer">
+                            <div className="flex items-center gap-1 cursor-pointer text-gray-700 hover:text-[rgb(var(--color-primary-light))]">
                                 <Link href={`/${lang}/announcements`}>{t.announcements}</Link>
-                                <Arrow />
+                                <Arrow className="transition-transform group-hover:rotate-180 group-hover:text-[rgb(var(--color-primary-light))]" />
                             </div>
                             <Dropdown>
                                 <DropdownItem href={`/${lang}/announcements/news`}>
@@ -62,14 +65,23 @@ export function Navbar({ lang }: { lang: Lang }) {
                         </li>
 
                         <li>
-                            <Link href={`/${lang}/knowledge`}>{t.knowledge}</Link>
+                            <Link className="hover:text-[rgb(var(--color-primary-light))]" href={`/${lang}/knowledge`}>{t.knowledge}</Link>
+                        </li>
+                        <li>
+                            <Link
+                                href={switchLangPath}
+                                className="flex items-center gap-2 rounded border px-3 py-1 text-sm hover:bg-[rgb(var(--color-primary-light)/0.1)] hover:text-[rgb(var(--color-primary))]"
+                            >
+                                <Icons.OutlineGlobe className="text-xl" />
+                                {lang === 'th' ? 'TH' : 'EN'}
+                            </Link>
                         </li>
                     </ul>
 
                     {/* ปุ่มเปลี่ยนภาษา */}
                     <Link
                         href={switchLangPath}
-                        className="flex items-center gap-2 rounded border px-3 py-1 text-sm hover:bg-gray-100"
+                        className="md:hidden flex items-center gap-2 rounded border px-3 py-1 text-sm "
                     >
                         <Icons.OutlineGlobe className="text-xl text-gray-600" />
                         {lang === 'th' ? 'TH' : 'EN'}
@@ -86,12 +98,7 @@ export function Navbar({ lang }: { lang: Lang }) {
                 {mobileOpen && (
                     <div className="mt-4 space-y-3 md:hidden">
 
-                        <Link
-                            href={`/${lang}`}
-                            className="block rounded px-2 py-2 hover:bg-gray-100"
-                        >
-                            {t.home}
-                        </Link>
+                        <Link href={`/${lang}`} className="block rounded px-2 py-2 hover:bg-gray-100"> {t.home} </Link>
 
                         {/* เกี่ยวกับเรา */}
                         <button
@@ -105,13 +112,13 @@ export function Navbar({ lang }: { lang: Lang }) {
                         {aboutOpen && (
                             <div className="ml-4 space-y-2">
                                 <Link href={`/${lang}/about/history`} className="block py-1">
-                                    {t.history}
+                                    {t.history_hos}
                                 </Link>
                                 <Link href={`/${lang}/about/vision`} className="block py-1">
                                     {t.vision}
                                 </Link>
                                 <Link href={`/${lang}/about/calendar`} className="block py-1">
-                                    {t.calendar}
+                                    {t.activity_calendar}
                                 </Link>
                             </div>
                         )}
@@ -153,11 +160,10 @@ export function Navbar({ lang }: { lang: Lang }) {
     );
 }
 
-function Arrow({ rotate = false }: { rotate?: boolean }) {
+function Arrow({ className = '' }: { className?: string }) {
     return (
         <svg
-            className={`h-4 w-4 text-gray-500 transition-transform ${rotate ? 'rotate-180' : ''
-                }`}
+            className={`h-4 w-4 transition-colors ${className}`}
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
@@ -168,6 +174,7 @@ function Arrow({ rotate = false }: { rotate?: boolean }) {
     );
 }
 
+
 function Dropdown({ children }: { children: React.ReactNode }) {
     return (
         <div className="invisible absolute left-0 top-full z-50 mt-3 w-64 rounded-xl bg-white p-4 shadow-lg opacity-0 transition-all group-hover:visible group-hover:opacity-100">
@@ -176,16 +183,17 @@ function Dropdown({ children }: { children: React.ReactNode }) {
     );
 }
 
-function DropdownItem({
-    href,
-    children,
-}: {
-    href: string;
-    children: React.ReactNode;
-}) {
+function DropdownItem({ href, children }: any) {
     return (
         <li>
-            <Link href={href} className="block hover:text-blue-600">
+            <Link
+                href={href}
+                className="
+                    block rounded px-2 py-1
+                    hover:bg-[rgb(var(--color-primary-light)/0.1)]
+                    hover:text-[rgb(var(--color-primary))]
+                    "
+            >
                 {children}
             </Link>
         </li>

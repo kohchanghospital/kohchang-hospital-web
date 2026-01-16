@@ -2,29 +2,25 @@ import Link from 'next/link';
 import { languages, Lang } from '@/i18n';
 
 export default async function AboutPage({ params }: { params: { lang: Lang } | Promise<{ lang: Lang }> }) {
-    const resolvedParams = await params;
-    const t = languages[resolvedParams.lang];
+    const t = languages[(await params).lang];
     return (
         <div>
             <section className="mx-auto max-w-6xl px-6 py-12">
                 <h2 className="mb-6 text-3xl font-bold">{t.about}</h2>
-                <ul className="space-y-4">
-                    <li>
-                        <Link href={`/${resolvedParams.lang}/about/history`} className="text-blue-600 underline">
-                            {t.history}
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href={`/${resolvedParams.lang}/about/vision`} className="text-blue-600 underline">
-                            {t.vision}
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href={`/${resolvedParams.lang}/about/calendar`} className="text-blue-600 underline">
-                            {t.calendar}
-                        </Link>
-                    </li>
-                </ul>
+                <div className="grid gap-4 md:grid-cols-1">
+                    <Link href={`/${(await params).lang}/about/history`} className="rounded-md border p-4 shadow hover:bg-[rgb(var(--color-primary-light)/0.1)]" >
+                        <h3 className="text-xl font-semibold">{t.history_hos}</h3>
+                    </Link>
+                    <Link href={`/${(await params).lang}/about/vision`} className="rounded-md border p-4 shadow hover:bg-[rgb(var(--color-primary-light)/0.1)]" >
+                        <h3 className="text-xl font-semibold">{t.vision}</h3>
+                    </Link>
+                    <Link href={`/${(await params).lang}/about/calendar`} className="rounded-md border p-4 shadow hover:bg-[rgb(var(--color-primary-light)/0.1)]" >
+                        <h3 className="text-xl font-semibold">{t.activity_calendar}</h3>
+                    </Link>
+                    <Link href={`/${(await params).lang}/about/vehicle`} className="rounded-md border p-4 shadow hover:bg-[rgb(var(--color-primary-light)/0.1)]" >
+                        <h3 className="text-xl font-semibold">{t.vehicle_calendar}</h3>
+                    </Link>
+                </div>
             </section>
         </div>
     );
