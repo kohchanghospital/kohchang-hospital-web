@@ -1,4 +1,5 @@
 import { LanguageProvider } from '@/context/LanguageContext';
+import TopRightRibbon from '@/app/components/TopRightRibbon'
 import { Noto_Sans_Thai, Inter } from 'next/font/google';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
@@ -14,7 +15,7 @@ const notoTh = Noto_Sans_Thai({
 
 // ฟอนต์อังกฤษ
 const inter = Inter({
-  subsets: ['latin'], 
+  subsets: ['latin'],
   weight: ['300', '400', '500', '600'],
   variable: '--font-en',
   display: 'swap',
@@ -38,6 +39,7 @@ export default async function LangLayout({
 
           {/* content */}
           <main className="flex-1">
+            <TopRightRibbon />
             {children}
           </main>
 

@@ -67,6 +67,20 @@ export function Navbar({ lang }: { lang: Lang }) {
                         <li>
                             <Link className="hover:text-[rgb(var(--color-primary-light))]" href={`/${lang}/knowledge`}>{t.knowledge}</Link>
                         </li>
+                        <li className="group relative">
+                            <div className="flex items-center gap-1 cursor-pointer text-gray-700 hover:text-[rgb(var(--color-primary-light))]">
+                                <Link href={`/${lang}/donation`}>{t.donation}</Link>
+                                <Arrow className="transition-transform group-hover:rotate-180 group-hover:text-[rgb(var(--color-primary-light))]" />
+                            </div>
+                            <Dropdown>
+                                <DropdownItem href={`/${lang}/donation/cash`}>
+                                    {t.cash_donation}
+                                </DropdownItem>
+                                <DropdownItem href={`/${lang}/donation/organ`}>
+                                    {t.organ_donation}
+                                </DropdownItem>
+                            </Dropdown>
+                        </li>
                         <li>
                             <Link
                                 href={switchLangPath}
@@ -177,7 +191,7 @@ function Arrow({ className = '' }: { className?: string }) {
 
 function Dropdown({ children }: { children: React.ReactNode }) {
     return (
-        <div className="invisible absolute left-0 top-full z-50 mt-3 w-64 rounded-xl bg-white p-4 shadow-lg opacity-0 transition-all group-hover:visible group-hover:opacity-100">
+        <div className="invisible absolute left-0 top-full z-50 mt-3 w-55 rounded-xl bg-white p-4 shadow-lg opacity-0 transition-all group-hover:visible group-hover:opacity-100">
             <ul className="space-y-2">{children}</ul>
         </div>
     );

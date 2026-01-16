@@ -80,3 +80,38 @@ body {
     border-color: rgb(var(--color-primary));
   }
 }
+
+
+/* =========================
+  FullCalendar Customization
+========================= */
+
+.fc .fc-daygrid-event {
+  cursor: pointer;
+}
+
+/* ปุ่มทั้งหมด */
+.fc .fc-button {
+  background-color: #430964;
+  border-color: #561979;
+  color: #ffffff;
+}
+
+/* hover */
+.fc .fc-button:hover {
+  background-color: #70249c;
+  border-color: #70249c;
+}
+
+/* ปุ่ม today */
+.fc .fc-today-button {
+  background-color: #430964;
+  border-color: #430964;
+}
+
+/* ปุ่มที่ถูก disable */
+.fc .fc-button:disabled {
+  background-color: #4c4255;
+  border-color: #4c4255;
+  cursor: not-allowed;
+}

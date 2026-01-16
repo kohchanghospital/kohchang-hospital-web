@@ -6,6 +6,7 @@ import {
 import { 
     FaPhoneAlt,
     FaFacebook,
+    FaChevronCircleLeft,
 } from "react-icons/fa";
 
 import { 
@@ -13,7 +14,8 @@ import {
 } from "react-icons/si";
 
 import { 
-    PiMapPinFill, 
+    PiMapPinFill,
+    PiPrinterFill,
 } from "react-icons/pi";
 
 export const Icons = { 
@@ -21,5 +23,7 @@ export const Icons = {
     Facebook: FaFacebook,
     PhoneAlt: FaPhoneAlt,
     Gmail: SiGmail,
+    ChevronCircleLeft: FaChevronCircleLeft,
+    PrinterFills: PiPrinterFill,
     MapPinFill: PiMapPinFill,
 };
