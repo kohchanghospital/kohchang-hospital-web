@@ -8,7 +8,7 @@ export function Footer({ lang }: { lang: Lang }) {
     const t = languages[lang];
 
     return (
-        <footer className="mt-16 bg-gray-100 text-gray-700">
+        <footer className="mt-10 bg-gray-100 text-gray-700">
             <div className="mx-auto max-w-7xl px-6 py-10">
                 <div className="grid gap-8 md:grid-cols-4">
 

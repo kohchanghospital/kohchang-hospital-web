@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams  } from 'next/navigation';
 import { languages, Lang } from '../../i18n';
 import { Icons } from '../icons/icons';
 
@@ -10,10 +10,16 @@ export function Navbar({ lang }: { lang: Lang }) {
     const t = languages[lang];
 
     const pathname = usePathname();
+    const searchParams = useSearchParams();
     const toggleLang: Lang = lang === 'th' ? 'en' : 'th';
 
-    // แปลง path เดิมเป็นอีกภาษา
-    const switchLangPath = pathname.replace(`/${lang}`, `/${toggleLang}`);
+    const segments = pathname.split('/');
+segments[1] = toggleLang; // เปลี่ยนเฉพาะ lang
+const newPath = segments.join('/');
+
+const query = searchParams.toString();
+const switchLangPath = query ? `${newPath}?${query}` : newPath;
+    // const switchLangPath = pathname.replace(`/${lang}`, `/${toggleLang}`);
 
     const [mobileOpen, setMobileOpen] = useState(false);
     const [aboutOpen, setAboutOpen] = useState(false);
