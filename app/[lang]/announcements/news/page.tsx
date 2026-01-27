@@ -10,7 +10,7 @@ type Announcement = {
 
 async function getNews(page: number) {
     const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/announcements?type_id=1&per_page=10&page=${page}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/announcements?type_id=1&per_page=10&page=${page}`,
         {
             cache: "no-store",
         }
@@ -47,7 +47,7 @@ export default async function NewsPage({
                 {news.map((item) => (
                     <a
                         key={item.id}
-                        href={`${process.env.NEXT_PUBLIC_API_URL}/api/announcements/file/${item.id}`}
+                        href={`${process.env.NEXT_PUBLIC_API_URL}/announcements/file/${item.id}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary-600 text-sm inline-block w-full"

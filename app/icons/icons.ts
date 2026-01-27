@@ -1,24 +1,28 @@
-import { 
+import {
     HiOutlineGlobe,
 
 } from "react-icons/hi";
 
-import { 
+import {
     FaPhoneAlt,
     FaFacebook,
     FaChevronCircleLeft,
 } from "react-icons/fa";
 
-import { 
+import {
+    FaArrowRight,
+} from "react-icons/fa6";
+
+import {
     SiGmail,
 } from "react-icons/si";
 
-import { 
+import {
     PiMapPinFill,
     PiPrinterFill,
 } from "react-icons/pi";
 
-export const Icons = { 
+export const Icons = {
     OutlineGlobe: HiOutlineGlobe,
     Facebook: FaFacebook,
     PhoneAlt: FaPhoneAlt,
@@ -26,4 +30,5 @@ export const Icons = {
     ChevronCircleLeft: FaChevronCircleLeft,
     PrinterFills: PiPrinterFill,
     MapPinFill: PiMapPinFill,
+    ArrowRight: FaArrowRight,
 };

@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname, useSearchParams  } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { languages, Lang } from '../../i18n';
 import { Icons } from '../icons/icons';
+import Image from 'next/image'
 
 export function Navbar({ lang }: { lang: Lang }) {
     const t = languages[lang];
@@ -14,11 +15,11 @@ export function Navbar({ lang }: { lang: Lang }) {
     const toggleLang: Lang = lang === 'th' ? 'en' : 'th';
 
     const segments = pathname.split('/');
-segments[1] = toggleLang; // เปลี่ยนเฉพาะ lang
-const newPath = segments.join('/');
+    segments[1] = toggleLang; // เปลี่ยนเฉพาะ lang
+    const newPath = segments.join('/');
 
-const query = searchParams.toString();
-const switchLangPath = query ? `${newPath}?${query}` : newPath;
+    const query = searchParams.toString();
+    const switchLangPath = query ? `${newPath}?${query}` : newPath;
     // const switchLangPath = pathname.replace(`/${lang}`, `/${toggleLang}`);
 
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -32,6 +33,7 @@ const switchLangPath = query ? `${newPath}?${query}` : newPath;
             <div className="mx-auto max-w-7xl px-6 py-4">
                 <div className="flex items-center justify-between">
                     <Link className="hover:text-primary-light]" href={`/${lang}`}>
+
                         <h1 className="text-2xl font-bold text-primary-dark">
                             {t.hos_name}
                         </h1>
