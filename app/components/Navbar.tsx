@@ -73,7 +73,7 @@ export function Navbar({ lang }: { lang: Lang }) {
                         </li>
 
                         <li>
-                            <Link className="hover:text-[rgb(var(--color-primary-light))]" href={`/${lang}/knowledge`}>{t.knowledge}</Link>
+                            <Link className="hover:text-[rgb(var(--color-primary-light))]" href={`/${lang}/knowledges`}>{t.knowledge}</Link>
                         </li>
                         <li className="group relative">
                             <div className="flex items-center gap-1 cursor-pointer text-gray-700 hover:text-[rgb(var(--color-primary-light))]">
@@ -169,7 +169,7 @@ export function Navbar({ lang }: { lang: Lang }) {
                         )}
 
                         <Link
-                            href={`/${lang}/knowledge`}
+                            href={`/${lang}/knowledges`}
                             className="block rounded px-2 py-2 hover:bg-gray-100"
                         >
                             {t.knowledge}
