@@ -21,6 +21,7 @@ export default {
     procurement: 'จัดซื้อจัดจ้าง',
     latest_procurement: 'จัดซื้อจัดจ้าง ล่าสุด',
     knowledge: 'สาระความรู้',
+    latest_knowledge: 'สาระความรู้ ล่าสุด',
     donation: 'บริจาค',
     cash_donation: 'สมทบทุน',
     cash_donation_description: 'สมทบทุนเพื่อสนับสนุนการดำเนินงานของโรงพยาบาลเกาะช้าง',

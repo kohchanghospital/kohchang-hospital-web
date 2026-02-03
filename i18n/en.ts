@@ -21,6 +21,7 @@ export default {
     procurement: 'Procurement',
     latest_procurement: 'Latest Procurement',
     knowledge: 'Health Knowledge',
+    latest_knowledge: 'Latest Health Knowledge',
     donation: 'Donations',
     cash_donation: 'Cash Donations',
     cash_donation_description: 'Contribute to support the operations of Kohchang Hospital.',

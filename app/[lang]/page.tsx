@@ -9,9 +9,30 @@ type Announcement = {
     created_at: string;
 };
 
+type Knowledge = {
+    id: number;
+    title: string;
+    created_at: string;
+};
+
 async function getLatestAnnouncements() {
     const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/announcements/latest?num=6`,
+        {
+            cache: "no-store",
+        }
+    );
+
+    if (!res.ok) {
+        throw new Error("โหลดข่าวไม่สำเร็จ");
+    }
+
+    return res.json();
+}
+
+async function getLatestKnowledges() {
+    const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/knowledges/latest?num=6`,
         {
             cache: "no-store",
         }
@@ -28,9 +49,12 @@ async function getLatestAnnouncements() {
 export default async function HomePage({ params }: { params: { lang: Lang } | Promise<{ lang: Lang }> }) {
     const t = languages[(await params).lang];
     const announcements = await getLatestAnnouncements();
-    const news : Announcement[] = announcements.data.news;
-    const procurement : Announcement[] = announcements.data.procurement;
+    const knowledge = await getLatestKnowledges();
+    const knowledges: Knowledge[] = knowledge.data.knowledge;
+    const news: Announcement[] = announcements.data.news;
+    const procurement: Announcement[] = announcements.data.procurement;
     console.log("API announcements:", announcements);
+    console.log("API knowledges:", knowledge);
     return (
         <div>
             <header className="bg-blue-50 py-60 text-center">
@@ -66,7 +90,45 @@ export default async function HomePage({ params }: { params: { lang: Lang } | Pr
                                         priority
                                     />
                                     <div className="pl-3">
-                                        <h4 className="font-semibold text-base pb-1">{item.title}</h4>
+                                        <h4 className="font-semibold text-base pb-1 truncate w-48">{item.title}</h4>
+                                        <p className="text-xs text-gray-600">
+                                            {new Date(item.created_at).toLocaleDateString("th-TH")}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    ))}
+                </div>
+                <div className="flex justify-between items-center mb-6">
+                    <h3 className="text-2xl font-semibold">{t.latest_knowledge}</h3>
+                    <a
+                        href={`/${(await params).lang}/knowledges`}
+                        className="text-primary-600 hover:underline self-end text-sm group"
+                    >
+                        {t.see_all}<Icons.ArrowRight className="ml-1 hidden group-hover:inline" />
+                    </a>
+                </div>
+                <div className="grid gap-6 md:grid-cols-3 mb-12">
+                    {knowledges.map((item) => (
+                        <a
+                            key={item.id}
+                            href={`${process.env.NEXT_PUBLIC_API_URL}/knowledges/file/${item.id}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary-600 text-sm inline-block w-full"
+                        >
+                            <div key={item.id} className="rounded-lg border p-4 shadow-sm hover:bg-[rgb(var(--color-primary-light)/0.1)] hover:text-[rgb(var(--color-primary))]">
+                                <div className="flex items-center ">
+                                    <Image
+                                        src="/images/book_rb.png"
+                                        alt="file icon"
+                                        width={40}
+                                        height={40}
+                                        priority
+                                    />
+                                    <div className="pl-3">
+                                        <h4 className="font-semibold text-base pb-1 truncate w-48">{item.title}</h4>
                                         <p className="text-xs text-gray-600">
                                             {new Date(item.created_at).toLocaleDateString("th-TH")}
                                         </p>
@@ -104,7 +166,7 @@ export default async function HomePage({ params }: { params: { lang: Lang } | Pr
                                         priority
                                     />
                                     <div className="pl-3">
-                                        <h4 className="font-semibold text-base pb-1">{item.title}</h4>
+                                        <h4 className="font-semibold text-base pb-1 truncate w-48">{item.title}</h4>
                                         <p className="text-xs text-gray-600">
                                             {new Date(item.created_at).toLocaleDateString("th-TH")}
                                         </p>

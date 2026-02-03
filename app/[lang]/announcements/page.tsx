@@ -6,7 +6,7 @@ export default async function AnnouncementsPage({ params }: { params: { lang: La
     const t = languages[(await params).lang];
     return (
         <div>
-            <section className="mx-auto max-w-6xl px-6 py-12">
+            <section className="mx-auto max-w-5xl px-6 py-12">
                 <h2 className="mb-6 text-3xl font-bold">{t.announcements}</h2>
 
                 <div className="grid gap-6 md:grid-cols-2">
