@@ -17,6 +17,7 @@ export default function NotFound() {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
+            minHeight: '50vh',
             padding: '20px',
             textAlign: 'center'
         }}>

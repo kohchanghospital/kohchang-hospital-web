@@ -30,6 +30,11 @@ export default function Error({
             padding: '20px',
             textAlign: 'center'
         }}>
+            <img
+                src="/images/el_error.png"
+                alt="404 Not Found"
+                style={{ maxWidth: '300px', marginBottom: '20px' }}
+            />
             <h2 className="text-2xl font-bold mb-4">
                 {t.error_occurred}
             </h2>
@@ -42,7 +47,7 @@ export default function Error({
                     onClick={() => reset()} // พยายามโหลดหน้านี้ใหม่อีกครั้ง
                 className="px-4 py-2 bg-[rgb(var(--color-primary))] text-white rounded hover:bg-[rgb(var(--color-primary-light)/0.1)] hover:text-[rgb(var(--color-primary))]"
                 >
-                    {lang === 'th' ? 'ลองอีกครั้ง' : 'Try again'}
+                    {t.try_again}
                 </button>
 
                 <a
