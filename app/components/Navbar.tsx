@@ -50,6 +50,7 @@ export function Navbar({ lang }: { lang: Lang }) {
                             </div>
                             <Dropdown>
                                 <DropdownItem href={`/${lang}/about/history`}>{t.history_hos}</DropdownItem>
+                                <DropdownItem href={`/${lang}/about/management`}>{t.management_team}</DropdownItem>
                                 <DropdownItem href={`/${lang}/about/vision`}>{t.vision_head}</DropdownItem>
                                 <DropdownItem href={`/${lang}/about/calendar`}>{t.activity_calendar}</DropdownItem>
                                 <DropdownItem href={`/${lang}/about/vehicle`}>{t.vehicle_calendar}</DropdownItem>

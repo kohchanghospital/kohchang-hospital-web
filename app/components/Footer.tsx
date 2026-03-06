@@ -81,7 +81,7 @@ export function Footer({ lang }: { lang: Lang }) {
             </div>
             {/* copyright */}
             <div className="border-t p-4 text-center text-sm text-gray-500">
-                © {new Date().getFullYear()} {t.hos_name}. All rights reserved.
+                © {new Date().getFullYear()} {t.hos_name}. All rights reserved. | <a href={`/${lang}/privacy-policy`} className="hover:text-[rgb(var(--color-primary-light))]">{t.privacy_policy}</a> | <a href={`/${lang}/cookie-policy`} className="hover:text-[rgb(var(--color-primary-light))]">{t.cookie_policy}</a> | <a href={`/${lang}/terms-of-service`} className="hover:text-[rgb(var(--color-primary-light))]">{t.terms_of_service}</a>
             </div>
         </footer>
     );

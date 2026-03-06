@@ -11,6 +11,9 @@ export default async function AboutPage({ params }: { params: { lang: Lang } | P
                     <Link href={`/${(await params).lang}/about/history`} className="rounded-md border p-4 shadow hover:bg-[rgb(var(--color-primary-light)/0.1)]" >
                         <h3 className="text-xl font-semibold">{t.history_hos}</h3>
                     </Link>
+                    <Link href={`/${(await params).lang}/about/management`} className="rounded-md border p-4 shadow hover:bg-[rgb(var(--color-primary-light)/0.1)]" >
+                        <h3 className="text-xl font-semibold">{t.management_team}</h3>
+                    </Link>
                     <Link href={`/${(await params).lang}/about/vision`} className="rounded-md border p-4 shadow hover:bg-[rgb(var(--color-primary-light)/0.1)]" >
                         <h3 className="text-xl font-semibold">{t.vision_head}</h3>
                     </Link>
