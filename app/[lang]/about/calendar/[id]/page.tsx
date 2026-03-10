@@ -21,7 +21,7 @@ export default async function CalendarDetailPage({ params, }: { params: { lang: 
 
             <div className="mb-4 flex ">
                 <div className="mr-4">
-                    <BackBtn lang={(await params).lang} base="about/vehicle" />
+                    <BackBtn lang={(await params).lang} base="about/calendar" />
                 </div>
                 <h1 className="text-3xl font-bold">
                     {t.activity_info}

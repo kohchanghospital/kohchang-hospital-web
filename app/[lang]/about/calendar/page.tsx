@@ -16,13 +16,31 @@ export default async function CalendarPage({ params }: { params: { lang: Lang } 
         },
     ];
     return (
-        <div>
-            <section className="mx-auto max-w-4xl px-6 py-12">
-                <h1 className="mb-6 text-3xl font-bold">{t.activity_calendar}</h1>
-                <div className="rounded-xl p-6 shadow-xl">
-                    <CalendarClient events={events} lang={(await params).lang} base="about/calendar" />
+        <>
+            <div
+                className="relative text-center py-24 bg-cover bg-center"
+                style={{
+                    backgroundImage: "url('/images/calendar.png')",
+                }}
+            >
+                {/* overlay ทำให้ตัวหนังสืออ่านง่าย */}
+                <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/70 to-white/10 backdrop-blur-sm"></div>
+                <div className="absolute inset-0 bg-black/20"></div>
+                <div className="relative z-10 text-gray-700">
+                    <h1 className="text-7xl font-bold text-[rgb(var(--color-primary))]">
+                        {t.activity_calendar}
+                    </h1>
                 </div>
-            </section>
-        </div>
+                {/* เส้นล่าง hero */}
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-purple-400"></div>
+            </div>
+            <div>
+                <section className="mx-auto max-w-4xl px-6 py-12">
+                    <div className="rounded-xl p-6 shadow-xl">
+                        <CalendarClient events={events} lang={(await params).lang} base="about/calendar" />
+                    </div>
+                </section>
+            </div>
+        </>
     );
 }

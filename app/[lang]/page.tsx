@@ -80,7 +80,7 @@ export default async function HomePage({ params }: { params: { lang: Lang } | Pr
                             rel="noopener noreferrer"
                             className="text-primary-600 text-sm inline-block w-full"
                         >
-                            <div key={item.id} className="rounded-lg border p-4 shadow-sm hover:bg-[rgb(var(--color-primary-light)/0.1)] hover:text-[rgb(var(--color-primary))]">
+                            <div key={item.id} className="rounded-lg border p-4 shadow-sm hover:bg-[rgb(var(--color-primary-light)/0.2)] hover:text-[rgb(var(--color-primary))]">
                                 <div className="flex items-center ">
                                     <Image
                                         src="/images/file_b.png"
@@ -118,7 +118,7 @@ export default async function HomePage({ params }: { params: { lang: Lang } | Pr
                             rel="noopener noreferrer"
                             className="text-primary-600 text-sm inline-block w-full"
                         >
-                            <div key={item.id} className="rounded-lg border p-4 shadow-sm hover:bg-[rgb(var(--color-primary-light)/0.1)] hover:text-[rgb(var(--color-primary))]">
+                            <div key={item.id} className="rounded-lg border p-4 shadow-sm hover:bg-[rgb(var(--color-primary-light)/0.2)] hover:text-[rgb(var(--color-primary))]">
                                 <div className="flex items-center ">
                                     <Image
                                         src="/images/book_rb.png"
@@ -156,7 +156,7 @@ export default async function HomePage({ params }: { params: { lang: Lang } | Pr
                             rel="noopener noreferrer"
                             className="text-primary-600 text-sm inline-block w-full"
                         >
-                            <div key={item.id} className="rounded-lg border p-4 shadow-sm hover:bg-[rgb(var(--color-primary-light)/0.1)] hover:text-[rgb(var(--color-primary))]">
+                            <div key={item.id} className="rounded-lg border p-4 shadow-sm hover:bg-[rgb(var(--color-primary-light)/0.2)] hover:text-[rgb(var(--color-primary))]">
                                 <div className="flex items-center ">
                                     <Image
                                         src="/images/file_y.png"

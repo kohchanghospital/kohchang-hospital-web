@@ -9,7 +9,7 @@ export default function Pagination({ currentPage, last_page, lang, path }: { cur
             {currentPage > 1 ? (
                 <a
                     href={`/${lang}${path}?page=1`}
-                    className="px-2 py-1 rounded hover:bg-[rgb(var(--color-primary-light)/0.1)] hover:text-[rgb(var(--color-primary))]"
+                    className="px-2 py-1 rounded hover:bg-[rgb(var(--color-primary-light)/0.2)] hover:text-[rgb(var(--color-primary))]"
                 >
                     «
                 </a>
@@ -23,7 +23,7 @@ export default function Pagination({ currentPage, last_page, lang, path }: { cur
             {currentPage > 1 ? (
                 <a
                     href={`/${lang}${path}?page=${currentPage - 1}`}
-                    className="px-2 py-1 rounded hover:bg-[rgb(var(--color-primary-light)/0.1)] hover:text-[rgb(var(--color-primary))]"
+                    className="px-2 py-1 rounded hover:bg-[rgb(var(--color-primary-light)/0.2)] hover:text-[rgb(var(--color-primary))]"
                 >
                     ‹
                 </a>
@@ -43,7 +43,7 @@ export default function Pagination({ currentPage, last_page, lang, path }: { cur
                         href={`/${lang}${path}?page=${p}`}
                         className={`px-3 py-1 rounded-full border text-sm ${p === currentPage
                             ? "bg-[rgb(var(--color-primary))] text-white font-semibold border-[rgb(var(--color-primary))]"
-                            : "hover:bg-[rgb(var(--color-primary-light)/0.1)] hover:text-[rgb(var(--color-primary))]"
+                            : "hover:bg-[rgb(var(--color-primary-light)/0.2)] hover:text-[rgb(var(--color-primary))]"
                             }`}
                     >
                         {p}
@@ -54,7 +54,7 @@ export default function Pagination({ currentPage, last_page, lang, path }: { cur
             {currentPage < last_page ? (
                 <a
                     href={`/${lang}${path}?page=${currentPage + 1}`}
-                    className="px-2 py-1 rounded hover:bg-[rgb(var(--color-primary-light)/0.1)] hover:text-[rgb(var(--color-primary))]"
+                    className="px-2 py-1 rounded hover:bg-[rgb(var(--color-primary-light)/0.2)] hover:text-[rgb(var(--color-primary))]"
                 >
                     ›
                 </a>
@@ -69,7 +69,7 @@ export default function Pagination({ currentPage, last_page, lang, path }: { cur
             {currentPage < last_page ? (
                 <a
                     href={`/${lang}${path}?page=${last_page}`}
-                    className="px-2 py-1 rounded hover:bg-[rgb(var(--color-primary-light)/0.1)] hover:text-[rgb(var(--color-primary))]"
+                    className="px-2 py-1 rounded hover:bg-[rgb(var(--color-primary-light)/0.2)] hover:text-[rgb(var(--color-primary))]"
                 >
                     »
                 </a>

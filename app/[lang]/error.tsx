@@ -45,7 +45,7 @@ export default function Error({
             <div className="flex gap-4">
                 <button
                     onClick={() => reset()} // พยายามโหลดหน้านี้ใหม่อีกครั้ง
-                className="px-4 py-2 bg-[rgb(var(--color-primary))] text-white rounded hover:bg-[rgb(var(--color-primary-light)/0.1)] hover:text-[rgb(var(--color-primary))]"
+                className="px-4 py-2 bg-[rgb(var(--color-primary))] text-white rounded hover:bg-[rgb(var(--color-primary-light)/0.2)] hover:text-[rgb(var(--color-primary))]"
                 >
                     {t.try_again}
                 </button>

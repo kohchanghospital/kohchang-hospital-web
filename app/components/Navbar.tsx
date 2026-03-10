@@ -93,7 +93,7 @@ export function Navbar({ lang }: { lang: Lang }) {
                         <li>
                             <Link
                                 href={switchLangPath}
-                                className="flex items-center gap-2 rounded border px-3 py-1 text-sm hover:bg-[rgb(var(--color-primary-light)/0.1)] hover:text-[rgb(var(--color-primary))]"
+                                className="flex items-center gap-2 rounded border px-3 py-1 text-sm hover:bg-[rgb(var(--color-primary-light)/0.2)] hover:text-[rgb(var(--color-primary))]"
                             >
                                 <Icons.OutlineGlobe className="text-xl" />
                                 {lang === 'th' ? 'TH' : 'EN'}
@@ -213,7 +213,7 @@ function DropdownItem({ href, children }: any) {
                 href={href}
                 className="
                     block rounded px-2 py-1
-                    hover:bg-[rgb(var(--color-primary-light)/0.1)]
+                    hover:bg-[rgb(var(--color-primary-light)/0.2)]
                     hover:text-[rgb(var(--color-primary))]
                     "
             >

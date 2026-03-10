@@ -30,7 +30,7 @@ export default function NotFound() {
             <p className="mb-4">{t.page_not_found_message}</p>
             <Link
                 href={`/${lang}/`}
-                className="px-4 py-2 bg-[rgb(var(--color-primary))] text-white rounded hover:bg-[rgb(var(--color-primary-light)/0.1)] hover:text-[rgb(var(--color-primary))]"
+                className="px-4 py-2 bg-[rgb(var(--color-primary))] text-white rounded hover:bg-[rgb(var(--color-primary-light)/0.2)] hover:text-[rgb(var(--color-primary))]"
             >
                 {t.return_home}
             </Link>

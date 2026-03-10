@@ -43,6 +43,11 @@ export function Footer({ lang }: { lang: Lang }) {
                                     {t.knowledge}
                                 </Link>
                             </li>
+                            <li>
+                                <Link href={`/${lang}/donation`} className="hover:text-[rgb(var(--color-primary-light))]">
+                                    {t.donation}
+                                </Link>
+                            </li>
                         </ul>
                     </div>
 
