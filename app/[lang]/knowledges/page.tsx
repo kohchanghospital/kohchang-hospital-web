@@ -52,8 +52,8 @@ export default async function knowledgePage({
             <div
                 className="relative text-center py-24 bg-cover bg-center"
                 style={{
-                    backgroundImage: "url('/images/announcement.png')",
-                    backgroundPosition: "center 25%",
+                    backgroundImage: "url('/images/knowledge.png')",
+                    backgroundPosition: "center 15%",
                 }}
             >
                 {/* overlay ทำให้ตัวหนังสืออ่านง่าย */}

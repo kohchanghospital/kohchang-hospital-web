@@ -29,7 +29,7 @@ export default async function AnnouncementsPage({ params }: { params: { lang: La
                     <div className="grid gap-6 md:grid-cols-2">
                         <Link
                             href={`/${(await params).lang}/announcements/news`}
-                            className="rounded-lg border p-6 shadow hover:bg-[rgb(var(--color-primary-light)/0.2)]"
+                            className="rounded-lg border p-6 shadow hover:bg-[rgb(var(--color-primary-light)/0.1)] hover:text-[rgb(var(--color-primary))]"
                         >
                             <h3 className="text-xl font-semibold">{t.news}</h3>
                             <p className="mt-2 text-gray-600">
@@ -38,7 +38,7 @@ export default async function AnnouncementsPage({ params }: { params: { lang: La
                         </Link>
                         <Link
                             href={`/${(await params).lang}/announcements/procurement`}
-                            className="rounded-lg border p-6 shadow hover:bg-[rgb(var(--color-primary-light)/0.2)]"
+                            className="rounded-lg border p-6 shadow hover:bg-[rgb(var(--color-primary-light)/0.1)] hover:text-[rgb(var(--color-primary))]"
                         >
                             <h3 className="text-xl font-semibold">{t.procurement}</h3>
                             <p className="mt-2 text-gray-600">

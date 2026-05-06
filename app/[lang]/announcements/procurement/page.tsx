@@ -43,8 +43,8 @@ export default async function ProcurementPage({
             <div
                 className="relative text-center py-24 bg-cover bg-center"
                 style={{
-                    backgroundImage: "url('/images/announcement.png')",
-                    backgroundPosition: "center 25%",
+                    backgroundImage: "url('/images/procurement.png')",
+                    backgroundPosition: "center 65%",
                 }}
             >
                 {/* overlay ทำให้ตัวหนังสืออ่านง่าย */}

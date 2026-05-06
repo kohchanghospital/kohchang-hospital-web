@@ -43,8 +43,8 @@ export default async function NewsPage({
             <div
                 className="relative text-center py-24 bg-cover bg-center"
                 style={{
-                    backgroundImage: "url('/images/announcement.png')",
-                    backgroundPosition: "center 25%",
+                    backgroundImage: "url('/images/news.png')",
+                    backgroundPosition: "center 45%",
                 }}
             >
                 {/* overlay ทำให้ตัวหนังสืออ่านง่าย */}

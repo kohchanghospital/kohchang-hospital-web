@@ -9,8 +9,8 @@ export default async function OrganDonationPage({ params }: { params: { lang: La
             <div
                 className="relative text-center py-24 bg-cover bg-center"
                 style={{
-                    backgroundImage: "url('/images/bg_organ.png')",
-                    backgroundPosition: "center 65%",
+                    backgroundImage: "url('/images/organ.png')",
+                    backgroundPosition: "center 10%",
                 }}
             >
                 {/* overlay ทำให้ตัวหนังสืออ่านง่าย */}
