@@ -72,6 +72,13 @@ export default async function CashDonationPage({ params, }: { params: { lang: La
                         className="mx-auto w-80 rounded-lg shadow"
                         alt="QR Donation"
                     />
+                    <a
+                        href="/images/qr-donation.png"
+                        download
+                        className="inline-block mt-4 px-4 py-2 bg-[rgb(var(--color-primary))] hover:bg-[rgb(var(--color-primary-light)/0.2)] hover:text-[rgb(var(--color-primary))] text-white rounded"
+                    >
+                        ดาวน์โหลด QR
+                    </a>
                 </div>
 
                 {/* HOW TO CONFIRM */}

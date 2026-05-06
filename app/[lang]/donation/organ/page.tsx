@@ -80,7 +80,7 @@ export default async function OrganDonationPage({ params }: { params: { lang: La
                     <a
                         href="https://organdonate.redcross.or.th/"
                         target="_blank"
-                        className="inline-block bg-[rgb(var(--color-primary-light))] hover:bg-[rgb(var(--color-primary-light)/0.2)] hover:text-[rgb(var(--color-primary))] text-xl text-white px-6 py-3 rounded-lg"
+                        className="inline-block bg-[rgb(var(--color-primary))] hover:bg-[rgb(var(--color-primary-light)/0.2)] hover:text-[rgb(var(--color-primary))] text-xl text-white px-6 py-3 rounded-lg"
                     >
                         ลงทะเบียนบริจาคอวัยวะ
                     </a>
