@@ -176,7 +176,7 @@ function ContentSection({
                     className="group inline-flex items-center self-start rounded-full border border-[#E5E7EB] bg-white px-4 py-2 text-sm font-medium text-[#64748B] shadow-sm transition-all duration-300 hover:scale-105 hover:border-[#C4B5FD] hover:bg-[#7C3AED]/10 hover:text-[#7C3AED] active:scale-95 sm:self-auto"
                 >
                     {seeAll}
-                    <Icons.ArrowRight className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                    <Icons.ArrowRight className="ml-2 hidden group-hover:inline " />
                 </a>
             </div>
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
