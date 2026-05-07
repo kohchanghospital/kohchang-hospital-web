@@ -6,16 +6,13 @@
   Theme Variables
 ========================= */
 :root {
-  /* Primary Purple */
+  /* ✅ UI IMPROVED */
   --color-primary: 124 58 237;
-  /* purple-600 */
-  --color-primary-light: 139 92 246;
-  /* purple-500 */
-  --color-primary-dark: 67 11 156;
-  /* purple-700 */
+  --color-primary-light: 167 139 250;
+  --color-primary-dark: 109 40 217;
 
-  --color-background: 255 255 255;
-  --color-foreground: 23 23 23;
+  --color-background: 248 250 252;
+  --color-foreground: 30 41 59;
 
 }
 
@@ -53,6 +50,16 @@ body {
     sans-serif;
 
   font-feature-settings: "tnum";
+}
+
+/* ✅ UI IMPROVED */
+::selection {
+  background: rgba(124, 58, 237, 0.18);
+  color: #1E293B;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 @layer utilities {
@@ -149,4 +156,20 @@ body {
     transform: translateY(0);
     opacity: 1;
   }
+}
+
+/* ✅ UI IMPROVED */
+@keyframes softReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-soft-reveal {
+  animation: softReveal 0.55s ease-out both;
 }

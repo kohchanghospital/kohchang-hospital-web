@@ -29,21 +29,21 @@ export default async function DonationPage({ params }: { params: { lang: Lang } 
                     <div className="grid gap-6 md:grid-cols-2">
                         <Link
                             href={`/${(await params).lang}/donation/cash`}
-                            className="group relative rounded-lg border p-6 shadow hover:bg-[rgb(var(--color-primary-light)/0.1)] hover:text-[rgb(var(--color-primary))] transition"
+                            className="group cursor-pointer rounded-xl border border-gray-200 bg-white p-4 shadow-md transition-all duration-300 ease-out hover:scale-[1.02] hover:bg-[rgba(124,58,237,0.05)] hover:shadow-lg md:p-5"
                         >
                             <Icons.Leaf className="absolute top-4 right-4 text-2xl text-white transition-colors group-hover:text-green-500" />
-                            <h3 className="text-xl font-semibold">{t.cash_donation}</h3>
-                            <p className="mt-2 text-gray-600">
+                            <h3 className="text-xl font-semibold text-[#1E293B] transition group-hover:text-[#7C3AED]">{t.cash_donation}</h3>
+                            <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-[#64748B] md:text-base">
                                 {t.cash_donation_description}
                             </p>
                         </Link>
                         <Link
                             href={`/${(await params).lang}/donation/organ`}
-                            className="group relative rounded-lg border p-6 shadow hover:bg-[rgb(var(--color-primary-light)/0.1)] hover:text-[rgb(var(--color-primary))] transition"
+                            className="group cursor-pointer rounded-xl border border-gray-200 bg-white p-4 shadow-md transition-all duration-300 ease-out hover:scale-[1.02] hover:bg-[rgba(124,58,237,0.05)] hover:shadow-lg md:p-5"
                         >
                             <Icons.Leaf className="absolute top-4 right-4 text-2xl text-white transition-colors group-hover:text-green-500" />
-                            <h3 className="text-xl font-semibold">{t.organ_donation}</h3>
-                            <p className="mt-2 text-gray-600">
+                            <h3 className="text-xl font-semibold text-[#1E293B] transition group-hover:text-[#7C3AED]">{t.organ_donation}</h3>
+                            <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-[#64748B] md:text-base">
                                 {t.organ_donation_description}
                             </p>
                         </Link>

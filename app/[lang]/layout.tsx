@@ -3,6 +3,7 @@ import TopRightRibbon from '@/app/components/TopRightRibbon'
 import { Noto_Sans_Thai, Inter } from 'next/font/google';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
+import { Lang } from '@/i18n';
 import '../globals.css';
 
 // ฟอนต์ไทย
@@ -26,10 +27,10 @@ export default async function LangLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { lang: 'th' | 'en' } | Promise<{ lang: 'th' | 'en' }>;
+  params: Promise<{ lang: string }>;
 }) {
   const resolvedParams = await params;
-  const lang = resolvedParams.lang;
+  const lang = resolvedParams.lang as Lang;
 
   return (
     <html lang={lang} className={`${notoTh.variable} ${inter.variable}`}>
