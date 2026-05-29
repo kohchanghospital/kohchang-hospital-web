@@ -127,7 +127,7 @@ export default function ManagementTeam({ params, }: { params: Promise<{ lang: st
                         </div>
 
                         {/* ✅ UI IMPROVED */}
-                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                        <div className="flex flex-wrap justify-center gap-10">
                             {group.members.map((p, idx) => (
                                 <Card key={idx} person={p} onClick={() => setSelected(p)} />
                             ))}
@@ -159,7 +159,7 @@ export default function ManagementTeam({ params, }: { params: Promise<{ lang: st
                         <img
                             src={selected.image}
                             alt={selected.name}
-                            className="mb-5 h-80 w-full rounded-2xl object-cover object-top"
+                            className="mb-5 h-full w-full rounded-2xl object-cover object-top"
                         />
 
                         <h3 className="text-xl font-bold text-[#1E293B]">{selected.name}</h3>
@@ -191,7 +191,7 @@ function Card({
                 <img
                     src={person.image}
                     alt={person.name}
-                    className="h-72 w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    className="h-80 w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-slate-950/25 to-transparent"></div>
             </div>

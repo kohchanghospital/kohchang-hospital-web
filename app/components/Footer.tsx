@@ -21,22 +21,7 @@ export function Footer({ lang }: { lang: Lang }) {
                         <p className="max-w-sm text-sm leading-7">
                             {t.sub_about}
                         </p>
-                    </div>
-
-                    <div>
-                        <h4 className="mb-4 text-sm font-semibold uppercase tracking-wide text-[#1E293B]">
-                            {t.home}
-                        </h4>
-                        <ul className="space-y-3 text-sm">
-                            <FooterLink href={`/${lang}/about`}>{t.about}</FooterLink>
-                            <FooterLink href={`/${lang}/announcements`}>{t.announcements}</FooterLink>
-                            <FooterLink href={`/${lang}/knowledges`}>{t.knowledge}</FooterLink>
-                            <FooterLink href={`/${lang}/donation`}>{t.donation}</FooterLink>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 className="mb-4 text-sm font-semibold uppercase tracking-wide text-[#1E293B]">
+                        <h4 className="mb-4 mt-6 text-sm font-semibold uppercase tracking-wide text-[#1E293B]">
                             {t.footer_contact}
                         </h4>
                         <ul className="space-y-3 text-sm leading-6">
@@ -64,6 +49,43 @@ export function Footer({ lang }: { lang: Lang }) {
                                     /kochang.hospital
                                 </a>
                             </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 className="mb-4 text-sm font-semibold uppercase tracking-wide text-[#1E293B]">
+                            {t.home}
+                        </h4>
+                        <ul className="space-y-3 text-sm mb-4">
+                            <FooterLink href={`/${lang}/`}>{t.home}</FooterLink>
+                        </ul>
+                        <h4 className="mb-4 text-sm font-semibold uppercase tracking-wide text-[#1E293B]">
+                            {t.about}
+                        </h4>
+                        <ul className="space-y-3 text-sm">
+                            <FooterLink href={`/${lang}/about/history`}>{t.history_hos}</FooterLink>
+                            <FooterLink href={`/${lang}/about/management`}>{t.management_team}</FooterLink>
+                            <FooterLink href={`/${lang}/about/vision`}>{t.vision_head}</FooterLink>
+                            <FooterLink href={`/${lang}/about/calendar`}>{t.activity_calendar}</FooterLink>
+                            <FooterLink href={`/${lang}/about/vehicle`}>{t.vehicle_calendar}</FooterLink>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 className="mb-4 text-sm font-semibold uppercase tracking-wide text-[#1E293B]">
+                            {t.announcements}
+                        </h4>
+                        <ul className="space-y-3 text-sm">
+                            <FooterLink href={`/${lang}/announcements/news`}>{t.news}</FooterLink>
+                            <FooterLink href={`/${lang}/announcements/procurement`}>{t.procurement}</FooterLink>
+                            <FooterLink href={`/${lang}/knowledges`}>{t.knowledge}</FooterLink>
+                        </ul>
+                        <h4 className="mb-4 mt-8 text-sm font-semibold uppercase tracking-wide text-[#1E293B]">
+                            {t.donation}
+                        </h4>
+                        <ul className="space-y-3 text-sm">
+                            <FooterLink href={`/${lang}/donation/cash`}>{t.cash_donation}</FooterLink>
+                            <FooterLink href={`/${lang}/donation/organ`}>{t.organ_donation}</FooterLink>
                         </ul>
                     </div>
 

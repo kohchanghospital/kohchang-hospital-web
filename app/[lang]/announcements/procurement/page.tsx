@@ -17,7 +17,7 @@ async function getProcurement(page: number) {
     );
 
     if (!res.ok) {
-        throw new Error("โหลดข่าวไม่สำเร็จ");
+        throw new Error("โหลดข้อมูลไม่สำเร็จ");
     }
 
     return res.json();
@@ -58,13 +58,13 @@ export default async function ProcurementPage({
             </div>
 
             {/* ✅ UI IMPROVED */}
-            <section className="mx-auto max-w-7xl px-4 py-10 md:py-12">
+            <section className="mx-auto max-w-4xl px-6 py-12">
                 {procurement.length === 0 ? (
                     <div className="py-10 text-center text-[#64748B]">
                         ไม่พบข้อมูล
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    <div className="space-y-4">
                         {procurement.map((item) => (
                             <a
                                 key={item.id}
@@ -73,7 +73,7 @@ export default async function ProcurementPage({
                                 rel="noopener noreferrer"
                                 className="group inline-block w-full text-sm text-[#7C3AED]"
                             >
-                                <div key={item.id} className="rounded-xl border border-gray-200 bg-white p-4 shadow-md transition-all duration-300 ease-out hover:scale-[1.02] hover:bg-[rgba(124,58,237,0.05)] hover:shadow-lg md:p-5">
+                                <div key={item.id} className="rounded-xl border border-gray-200 bg-white p-4 shadow-md transition-all duration-300 ease-out hover:scale-[1.02] hover:bg-[rgba(124,58,237,0.05)] hover:shadow-lg md:p-4">
                                     <div className="flex items-start gap-4">
                                         <Image
                                             src="/images/file_yy.png"
