@@ -1,9 +1,75 @@
 import { languages, Lang } from "@/i18n";
-import { Icons } from '@/app/icons/icons'
+import { Icons } from "@/app/icons/icons";
 import CopyAccount from "@/app/components/CopyAccount";
 
-export default async function CashDonationPage({ params, }: { params: { lang: Lang } | Promise<{ lang: Lang }>; }) {
+type DonationSettings = {
+    bank_name: string;
+    account_name: string;
+    account_number: string;
+    qr_code_image_url: string | null;
+    email: string;
+    phone: string;
+    fax: string;
+    facebook: string;
+    organization_name: string;
+    description: string;
+    address: string;
+    google_map_embed_url: string;
+    latitude: string | number;
+    longitude: string | number;
+};
+
+const fallbackSettings: DonationSettings = {
+    bank_name: "ธนาคารกรุงไทย",
+    account_name: "โรงพยาบาลเกาะช้าง",
+    account_number: "XXX-X-XXXXX-X",
+    qr_code_image_url: "/images/qr-donation.png",
+    email: "kohchanghealth123@gmail.com",
+    phone: "039-586-131",
+    fax: "039-586-131, 039-586-160",
+    facebook: "https://www.facebook.com/kochang.hospital/",
+    organization_name: "โรงพยาบาลเกาะช้าง",
+    description: "เงินบริจาคของท่านจะนำไปใช้ในการพัฒนาเครื่องมือทางการแพทย์ สนับสนุนการรักษาผู้ป่วย และพัฒนาการบริการของโรงพยาบาลเกาะช้าง",
+    address: "21/1 หมู่ที่ 2 ตำบลเกาะช้าง อำเภอเกาะช้าง จังหวัดตราด 23170",
+    google_map_embed_url: "https://maps.app.goo.gl/JuEfXGN8bZoXPP2r8",
+    latitude: 12.103,
+    longitude: 102.354,
+};
+
+async function getDonationSettings(): Promise<DonationSettings> {
+    try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api";
+        const res = await fetch(`${apiUrl}/donation/settings`, {
+            cache: "no-store",
+        });
+
+        if (!res.ok) {
+            return fallbackSettings;
+        }
+
+        const json = await res.json();
+        return {
+            ...fallbackSettings,
+            ...json.data,
+            qr_code_image_url: json.data?.qr_code_image_url || fallbackSettings.qr_code_image_url,
+        };
+    } catch {
+        return fallbackSettings;
+    }
+}
+
+function facebookLabel(url: string) {
+    try {
+        const parsed = new URL(url);
+        return parsed.pathname.replace(/^\/|\/$/g, "") || parsed.hostname;
+    } catch {
+        return url;
+    }
+}
+
+export default async function CashDonationPage({ params }: { params: { lang: Lang } | Promise<{ lang: Lang }> }) {
     const t = languages[(await params).lang];
+    const settings = await getDonationSettings();
 
     return (
         <>
@@ -37,8 +103,7 @@ export default async function CashDonationPage({ params, }: { params: { lang: La
                     </h2>
 
                     <p className="text-gray-600">
-                        เงินบริจาคของท่านจะนำไปใช้ในการพัฒนาเครื่องมือทางการแพทย์
-                        สนับสนุนการรักษาผู้ป่วย และพัฒนาการบริการของโรงพยาบาลเกาะช้าง
+                        {settings.description}
                     </p>
                 </div>
 
@@ -49,13 +114,13 @@ export default async function CashDonationPage({ params, }: { params: { lang: La
                     </h3>
 
                     <div className="space-y-2 text-gray-700">
-                        <p><strong>ธนาคาร:</strong> ธนาคารกรุงไทย</p>
-                        <p><strong>ชื่อบัญชี:</strong> โรงพยาบาลเกาะช้าง</p>
+                        <p><strong>ธนาคาร:</strong> {settings.bank_name}</p>
+                        <p><strong>ชื่อบัญชี:</strong> {settings.account_name}</p>
                         <p className="flex items-start gap-2">
                             <strong>เลขบัญชี:</strong>
 
                             <span className="relative inline-block pr-5">
-                                <CopyAccount account="XXX-X-XXXXX-X" />
+                                <CopyAccount account={settings.account_number} />
                             </span>
                         </p>
                     </div>
@@ -68,12 +133,12 @@ export default async function CashDonationPage({ params, }: { params: { lang: La
                     </h3>
 
                     <img
-                        src="/images/qr-donation.png"
+                        src={settings.qr_code_image_url || fallbackSettings.qr_code_image_url || ""}
                         className="mx-auto w-80 rounded-lg shadow"
                         alt="QR Donation"
                     />
                     <a
-                        href="/images/qr-donation.png"
+                        href={settings.qr_code_image_url || fallbackSettings.qr_code_image_url || ""}
                         download
                         className="inline-block mt-4 px-4 py-2 bg-[rgb(var(--color-primary))] hover:bg-[rgb(var(--color-primary-light)/0.2)] hover:text-[rgb(var(--color-primary))] text-white rounded"
                     >
@@ -92,9 +157,9 @@ export default async function CashDonationPage({ params, }: { params: { lang: La
                     </p>
 
                     <ul className="space-y-2 text-gray-700">
-                        <li><Icons.Gmail className="text-red-500 inline mr-2" /> Email: <a href="mailto:kohchanghealth123@gmail.com" className="hover:text-[rgb(var(--color-primary-light))]">kohchanghealth123@gmail.com</a></li>
-                        <li><Icons.Fax className="text-xl text-gray-500 inline mr-1" /> Fax: 039-586-131, 039-586-160</li>
-                        <li><Icons.Facebook className="text-blue-500 inline mr-2" /> Facebook: <a href="https://www.facebook.com/kochang.hospital/" target="_blank" className="hover:text-[rgb(var(--color-primary-light))]">kochang.hospital</a></li>
+                        <li><Icons.Gmail className="text-red-500 inline mr-2" /> Email: <a href={`mailto:${settings.email}`} className="hover:text-[rgb(var(--color-primary-light))]">{settings.email}</a></li>
+                        <li><Icons.Fax className="text-xl text-gray-500 inline mr-1" /> Fax: {settings.fax}</li>
+                        <li><Icons.Facebook className="text-blue-500 inline mr-2" /> Facebook: <a href={settings.facebook} target="_blank" className="hover:text-[rgb(var(--color-primary-light))]">{facebookLabel(settings.facebook)}</a></li>
                     </ul>
                 </div>
 
@@ -107,16 +172,16 @@ export default async function CashDonationPage({ params, }: { params: { lang: La
                     <div className="space-y-3 text-gray-700">
                         <p>
                             ท่านสามารถเดินทางมาบริจาคเงินสมทบทุนได้ด้วยตนเองที่
-                            <span className="font-semibold"> โรงพยาบาลเกาะช้าง</span>
+                            <span className="font-semibold"> {settings.organization_name}</span>
                         </p>
 
                         <p>
                             <Icons.MapPin className="text-red-500 inline mr-1" /> <span className="font-semibold">ที่อยู่: </span>
-                            21/1 หมู่ที่ 2 ตำบลเกาะช้าง อำเภอเกาะช้าง จังหวัดตราด 23170
+                            {settings.address}
                         </p>
 
                         <p>
-                            <Icons.PhoneAlt className="text-orange-500 inline mr-1" /> <span className="font-semibold">โทรศัพท์:</span> <a href="tel:+6639586131" className="hover:text-[rgb(var(--color-primary-light))]">039-586-131</a>
+                            <Icons.PhoneAlt className="text-orange-500 inline mr-1" /> <span className="font-semibold">โทรศัพท์:</span> <a href={`tel:${settings.phone.replace(/[^\d+]/g, "")}`} className="hover:text-[rgb(var(--color-primary-light))]">{settings.phone}</a>
                         </p>
                     </div>
                 </div>
@@ -124,9 +189,10 @@ export default async function CashDonationPage({ params, }: { params: { lang: La
                 {/* GOOGLE MAP */}
                 <div className="rounded-xl overflow-hidden shadow-md">
                     <iframe
-                        src="https://maps.google.com/maps?q=โรงพยาบาลเกาะช้าง&z=15&output=embed"
+                        src={settings.google_map_embed_url}
                         className="w-full h-72 border-0"
                         loading="lazy"
+                        title={`แผนที่ ${settings.organization_name}`}
                     ></iframe>
                 </div>
 

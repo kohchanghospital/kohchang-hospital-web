@@ -16,7 +16,7 @@ export default {
     activity_calendar: 'ปฏิทินกิจกรรม',
     activity_info: 'ข้อมูลกิจกรรม',
     vehicle_calendar: 'ปฏิทินการใช้รถยนต์',
-    vehicle_info: 'ข้อมูลแผนกการใช้รถยนต์',
+    vehicle_info: 'ข้อมูลแผนการใช้รถยนต์',
     announcements: 'ประกาศ',
     news: 'ข่าวสาร/ประชาสัมพันธ์',
     latest_news: 'ข่าวสาร/ประชาสัมพันธ์ ล่าสุด',
