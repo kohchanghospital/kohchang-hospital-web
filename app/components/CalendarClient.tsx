@@ -3,6 +3,7 @@
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
+import type { EventInput } from '@fullcalendar/core'
 import { useRouter } from 'next/navigation'
 
 export default function CalendarClient({
@@ -10,7 +11,7 @@ export default function CalendarClient({
     lang,
     base,
 }: {
-    events: any[]
+    events: EventInput[]
     lang: string
     base: string
 }) {

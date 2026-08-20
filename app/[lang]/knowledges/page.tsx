@@ -94,7 +94,7 @@ export default async function knowledgePage({
                         ))}
                     </div>
                 )}
-                <Pagination currentPage={currentPage} last_page={data.last_page} lang={lang} path="/knowledge" />
+                <Pagination currentPage={currentPage} last_page={data.last_page} lang={lang} path="/knowledges" />
             </section>
         </>
     );
