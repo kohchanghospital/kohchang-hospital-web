@@ -19,16 +19,16 @@ function LoadingShell({ children }: { children: React.ReactNode }) {
 function HeroSkeleton({ compact = false }: { compact?: boolean }) {
     return (
         <header className={`relative overflow-hidden px-4 text-center ${compact ? 'py-20 md:py-24' : 'py-20 sm:py-24 lg:py-28'}`}>
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(196,181,253,0.32),transparent_34%),linear-gradient(135deg,#F8FAFC_0%,#FFFFFF_48%,rgba(167,139,250,0.16)_100%)]" />
-            <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-[#7C3AED] via-[#A78BFA] to-[#C4B5FD]" />
+            <div className="absolute inset-0 bg-[linear-gradient(105deg,#0F2A3D_0%,#0F4C5C_58%,#087780_100%)]" />
+            <div className="absolute inset-x-0 bottom-0 h-px bg-teal-300/50" />
             <div className="relative mx-auto flex max-w-4xl flex-col items-center">
-                {!compact && <SkeletonBlock className="h-9 w-40 rounded-full bg-white/80" />}
-                <SkeletonBlock className={`${compact ? 'h-8 w-56 md:h-9' : 'mt-6 h-10 w-full max-w-xl sm:h-12'}`} />
+                {!compact && <SkeletonBlock className="h-9 w-40 rounded-lg !bg-white/15" />}
+                <SkeletonBlock className={`${compact ? 'h-8 w-56 !bg-white/20 md:h-9' : 'mt-6 h-10 w-full max-w-xl !bg-white/20 sm:h-12'}`} />
                 {!compact && (
                     <>
-                        <SkeletonBlock className="mt-5 h-4 w-full max-w-2xl" />
-                        <SkeletonBlock className="mt-3 h-4 w-10/12 max-w-xl" />
-                        <SkeletonBlock className="mt-8 h-12 w-36 rounded-full" />
+                        <SkeletonBlock className="mt-5 h-4 w-full max-w-2xl !bg-white/15" />
+                        <SkeletonBlock className="mt-3 h-4 w-10/12 max-w-xl !bg-white/15" />
+                        <SkeletonBlock className="mt-8 h-12 w-36 rounded-lg !bg-white/20" />
                     </>
                 )}
             </div>

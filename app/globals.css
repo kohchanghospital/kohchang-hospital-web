@@ -1,175 +1,117 @@
-/* Tailwind v4 – ใช้แบบ CSS-first */
 @import "tailwindcss";
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
-/* =========================
-  Theme Variables
-========================= */
 :root {
-  /* ✅ UI IMPROVED */
-  --color-primary: 124 58 237;
-  --color-primary-light: 167 139 250;
-  --color-primary-dark: 109 40 217;
-
-  --color-background: 248 250 252;
+  --color-primary: 8 119 128;
+  --color-primary-light: 204 251 241;
+  --color-primary-dark: 15 76 92;
+  --color-secondary: 15 42 61;
+  --color-accent: 14 165 164;
+  --color-success: 22 163 74;
+  --color-warning: 217 119 6;
+  --color-danger: 220 38 38;
+  --color-info: 2 132 199;
+  --color-background: 246 249 250;
+  --color-surface: 255 255 255;
   --color-foreground: 30 41 59;
-
+  --color-muted: 100 116 139;
+  --color-border: 220 229 232;
+  --color-focus: 13 148 136;
+  --radius-sm: .5rem;
+  --radius-md: .75rem;
+  --radius-lg: 1rem;
+  --shadow-sm: 0 1px 2px rgba(15, 42, 61, .05);
+  --shadow-md: 0 10px 30px rgba(15, 42, 61, .08);
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: 10 10 10;
-    --color-foreground: 237 237 237;
-  }
-} */
-
-/* =========================
-  Font utilities
-========================= */
-.font-th {
-  font-family: var(--font-th), sans-serif;
-}
-
-.font-en {
-  font-family: var(--font-en), sans-serif;
-}
-
-/* =========================
-  Global body font (AUTO TH/EN)
-========================= */
-
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: rgb(var(--color-background)); }
 body {
-  background-color: rgb(var(--color-background));
+  margin: 0;
+  background: rgb(var(--color-background));
   color: rgb(var(--color-foreground));
-
-  /* เรียงลำดับใหม่ */
-  font-family: 
-    var(--font-en),   /* 1. Krub (มาแค่ Latin) */
-    var(--font-th),   /* 2. Noto Sans Thai (มาเสริมตัวไทย) */
-    system-ui, 
-    sans-serif;
-
+  font-family: var(--font-en), var(--font-th), system-ui, sans-serif;
   font-feature-settings: "tnum";
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+  text-rendering: optimizeLegibility;
 }
+button, input, textarea, select { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+img { max-width: 100%; }
+:focus-visible { outline: 3px solid rgb(var(--color-focus) / .35); outline-offset: 3px; border-radius: .375rem; }
+::selection { background: rgb(var(--color-primary) / .18); color: rgb(var(--color-secondary)); }
+.font-th { font-family: var(--font-th), sans-serif; }
+.font-en { font-family: var(--font-en), sans-serif; }
+.bg-primary { background-color: rgb(var(--color-primary)); }
+.bg-primary-light { background-color: rgb(var(--color-primary-light)); }
+.text-primary { color: rgb(var(--color-primary)); }
+.text-primary-light { color: rgb(var(--color-primary-light)); }
+.text-primary-dark { color: rgb(var(--color-primary-dark)); }
+.border-primary { border-color: rgb(var(--color-primary)); }
+/* Compatibility mapping for legacy utilities while pages migrate to tokens. */
+.text-\[\#7C3AED\] { color: rgb(var(--color-primary)) !important; }
+.hover\:text-\[\#7C3AED\]:hover { color: rgb(var(--color-primary-dark)) !important; }
+.bg-\[\#7C3AED\] { background-color: rgb(var(--color-primary)) !important; }
+.bg-\[\#C4B5FD\] { background-color: rgb(var(--color-primary-light)) !important; }
+.border-\[\#C4B5FD\] { border-color: rgb(var(--color-primary) / .35) !important; }
 
-/* ✅ UI IMPROVED */
-::selection {
-  background: rgba(124, 58, 237, 0.18);
-  color: #1E293B;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-@layer utilities {
-  .bg-primary {
-    background-color: rgb(var(--color-primary));
+@layer components {
+  .container-page { width: min(100% - 2rem, 80rem); margin-inline: auto; }
+  .surface-card { border: 1px solid rgb(var(--color-border)); border-radius: var(--radius-lg); background: rgb(var(--color-surface)); box-shadow: var(--shadow-sm); }
+  .btn-primary, .btn-secondary, .btn-outline, .btn-ghost, .btn-danger {
+    display: inline-flex; min-height: 2.75rem; align-items: center; justify-content: center; gap: .5rem;
+    border-radius: var(--radius-md); padding: .625rem 1rem; font-size: .925rem; font-weight: 600; line-height: 1.25;
+    transition: background-color .18s ease, border-color .18s ease, color .18s ease, box-shadow .18s ease, transform .18s ease;
   }
-
-  .bg-primary-light {
-    background-color: rgb(var(--color-primary-light));
-  }
-
-  .text-primary {
-    color: rgb(var(--color-primary));
-  }
-
-  .text-primary-light {
-    color: rgb(var(--color-primary-light));
-  }
-
-  .text-primary-dark {
-    color: rgb(var(--color-primary-dark));
-  }
-
-  .border-primary {
-    border-color: rgb(var(--color-primary));
-  }
+  .btn-primary { background: rgb(var(--color-primary)); color: white; box-shadow: 0 5px 16px rgb(var(--color-primary) / .18); }
+  .btn-primary:hover { background: rgb(var(--color-primary-dark)); transform: translateY(-1px); }
+  .btn-secondary { background: rgb(var(--color-secondary)); color: white; }
+  .btn-outline { border: 1px solid rgb(var(--color-border)); background: white; color: rgb(var(--color-secondary)); }
+  .btn-outline:hover { border-color: rgb(var(--color-primary) / .45); background: rgb(var(--color-primary-light) / .45); color: rgb(var(--color-primary-dark)); }
+  .btn-ghost { color: rgb(var(--color-muted)); }
+  .btn-ghost:hover { background: rgb(var(--color-background)); color: rgb(var(--color-primary-dark)); }
+  .btn-danger { background: rgb(var(--color-danger)); color: white; }
+  .field-control { min-height: 2.75rem; width: 100%; border: 1px solid rgb(var(--color-border)); border-radius: var(--radius-md); background: white; padding: .65rem .8rem; color: rgb(var(--color-foreground)); }
+  .field-control:focus { border-color: rgb(var(--color-primary)); box-shadow: 0 0 0 3px rgb(var(--color-primary) / .12); outline: 0; }
+  .status-badge { display: inline-flex; align-items: center; border-radius: 999px; padding: .25rem .625rem; font-size: .75rem; font-weight: 600; }
 }
 
+.prose { color: rgb(var(--color-foreground)); line-height: 1.85; }
+.prose :where(h1,h2,h3,h4) { color: rgb(var(--color-secondary)); line-height: 1.35; }
+.prose a { color: rgb(var(--color-primary-dark)); text-underline-offset: 3px; }
 
-/* =========================
-  FullCalendar Customization
-========================= */
+.fc { --fc-border-color: rgb(var(--color-border)); --fc-today-bg-color: rgb(var(--color-primary-light) / .55); }
+.fc .fc-toolbar-title { color: rgb(var(--color-secondary)); font-size: clamp(1.1rem, 3vw, 1.45rem); font-weight: 700; }
+.fc .fc-button-primary { border-color: rgb(var(--color-primary)); background: rgb(var(--color-primary)); box-shadow: none; text-transform: capitalize; }
+.fc .fc-button-primary:hover, .fc .fc-button-primary:not(:disabled).fc-button-active { border-color: rgb(var(--color-primary-dark)); background: rgb(var(--color-primary-dark)); }
+.fc .fc-button:disabled { border-color: rgb(var(--color-border)); background: rgb(var(--color-muted)); opacity: .55; }
+.fc .fc-col-header-cell { background: rgb(var(--color-background)); color: rgb(var(--color-secondary)); font-weight: 600; }
+.fc .fc-col-header-cell-cushion, .fc .fc-daygrid-day-number { padding: .55rem; }
+.fc .fc-daygrid-event { cursor: pointer; border: 0; border-radius: .4rem; background: rgb(var(--color-primary)); padding: .25rem .4rem; transition: background-color .18s ease, transform .18s ease, box-shadow .18s ease; }
+.fc .fc-daygrid-event:hover { background: rgb(var(--color-primary-dark)); box-shadow: 0 3px 10px rgb(var(--color-secondary) / .18); transform: translateY(-1px); }
+.fc .fc-daygrid-event:focus-visible { outline: 3px solid rgb(var(--color-focus) / .4); outline-offset: 2px; }
+.fc .fc-daygrid-more-link { color: rgb(var(--color-primary-dark)); font-weight: 700; }
+.fc .fc-icon-chevron-left::before { content: "‹"; font-family: system-ui, sans-serif; font-size: 1.5rem; line-height: .7; }
+.fc .fc-icon-chevron-right::before { content: "›"; font-family: system-ui, sans-serif; font-size: 1.5rem; line-height: .7; }
 
-.fc .fc-daygrid-event {
-  cursor: pointer;
+@keyframes softReveal { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+.animate-soft-reveal { animation: softReveal .42s ease-out both; }
+.animate-fadeIn { animation: fadeIn .2s ease-out; }
+.animate-modal { animation: slideUp .25s ease-out; }
+
+@media (max-width: 640px) {
+  .container-page { width: min(100% - 1.25rem, 80rem); }
+  .fc .fc-toolbar { align-items: stretch; flex-direction: column; gap: .75rem; }
+  .fc .fc-toolbar-chunk { display: flex; justify-content: center; }
+  .fc .fc-button { min-height: 2.5rem; padding: .4rem .65rem; }
+  .fc .fc-daygrid-event { max-width: 100%; white-space: normal; }
+  .fc .fc-daygrid-day-number { padding: .35rem; font-size: .8rem; }
+  .fc .fc-daygrid-day-frame { min-height: 4.5rem; }
 }
 
-/* ปุ่มทั้งหมด */
-.fc .fc-button {
-  background-color: #430964;
-  border-color: #561979;
-  color: #ffffff;
-}
-
-/* hover */
-.fc .fc-button:hover {
-  background-color: #70249c;
-  border-color: #70249c;
-}
-
-/* ปุ่ม today */
-.fc .fc-today-button {
-  background-color: #430964;
-  border-color: #430964;
-}
-
-/* ปุ่มที่ถูก disable */
-.fc .fc-button:disabled {
-  background-color: #4c4255;
-  border-color: #4c4255;
-  cursor: not-allowed;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes modal {
-  from {
-    opacity: 0;
-    transform: translateY(30px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.25s ease-out;
-}
-
-.animate-modal {
-  animation: modal 0.3s ease-out;
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(80px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* ✅ UI IMPROVED */
-@keyframes softReveal {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-soft-reveal {
-  animation: softReveal 0.55s ease-out both;
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }

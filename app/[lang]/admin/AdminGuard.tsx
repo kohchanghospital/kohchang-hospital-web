@@ -17,7 +17,7 @@ export default function AdminGuard({
             try {
                 await api.get('/api/user'); // เช็ก session
                 setLoading(false);
-            } catch (error) {
+            } catch {
                 router.replace('/login');
             }
         };
@@ -26,7 +26,17 @@ export default function AdminGuard({
     }, [router]);
 
     if (loading) {
-        return <div className="p-8">กำลังตรวจสอบสิทธิ์...</div>;
+        return (
+            <div className="mx-auto max-w-6xl" role="status" aria-live="polite">
+                <span className="sr-only">กำลังตรวจสอบสิทธิ์</span>
+                <div className="h-8 w-48 animate-pulse rounded-lg bg-slate-200" />
+                <div className="surface-card mt-7 space-y-4 p-8">
+                    <div className="h-12 w-12 animate-pulse rounded-xl bg-slate-100" />
+                    <div className="h-6 w-56 animate-pulse rounded bg-slate-100" />
+                    <div className="h-4 w-full max-w-xl animate-pulse rounded bg-slate-100" />
+                </div>
+            </div>
+        );
     }
 
     return <>{children}</>;

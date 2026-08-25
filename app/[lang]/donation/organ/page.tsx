@@ -1,30 +1,12 @@
 import { languages, Lang } from "@/i18n";
+import { PublicHero } from "@/app/components/PublicUI";
 
 export default async function OrganDonationPage({ params }: { params: { lang: Lang } | Promise<{ lang: Lang }> }) {
     const t = languages[(await params).lang];
     return (
         <>
-            {/* Hero */}
-
-            <div
-                className="relative text-center py-24 bg-cover bg-center"
-                style={{
-                    backgroundImage: "url('/images/organ.png')",
-                    backgroundPosition: "center 10%",
-                }}
-            >
-                {/* overlay ทำให้ตัวหนังสืออ่านง่าย */}
-                <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-white/10 backdrop-blur-sm"></div>
-                <div className="absolute inset-0 bg-black/20"></div>
-                <div className="relative z-10 text-gray-700">
-                    <h1 className="text-7xl font-bold text-[rgb(var(--color-primary))]">
-                        {t.organ_donation}
-                    </h1>
-                </div>
-                {/* เส้นล่าง hero */}
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-purple-400"></div>
-            </div>
-            <div className="max-w-6xl mx-auto p-6">
+            <PublicHero title={t.organ_donation} eyebrow="Give the gift of life" image="/images/organ.png" />
+            <div className="container-page max-w-6xl py-10 sm:py-14">
                 <div className="text-center">
                     <div className="relative z-10 text-gray-700">
                         <p className="mt-4 text-xl font-bold">
@@ -38,12 +20,12 @@ export default async function OrganDonationPage({ params }: { params: { lang: La
                 </div>
 
                 {/* Content */}
-                <div className="grid md:grid-cols-2 gap-8 mt-8">
-                    <div>
+                <div className="mt-8 grid gap-6 md:grid-cols-2">
+                    <div className="surface-card p-5 leading-8 sm:p-7">
                         <h2 className="text-2xl font-bold mb-4">
                             ความสำคัญของการบริจาคอวัยวะ
                         </h2>
-                        <p className="mr-10">
+                        <p>
                             &quot;การให้ชีวิตใหม่&quot; ที่ยิ่งใหญ่ที่สุด ช่วยต่อลมหายใจให้ผู้ป่วยโรคเรื้อรังระยะสุดท้าย
                             ได้ถึง 8 รายต่อผู้บริจาค 1 ราย เป็นการเปลี่ยนชีวิตผู้รับให้ดีขึ้น ลดภาวะเจ็บป่วย
                             และเป็นประโยชน์สูงสุดทางการแพทย์ ถือเป็นมหากุศลที่สร้างสรรค์สังคมและช่วยให้ผู้รับพ้นจากความทุกข์ทรมาน
@@ -60,7 +42,7 @@ export default async function OrganDonationPage({ params }: { params: { lang: La
                             <li>เนื้อเยื่อ</li>
                         </ul>
                     </div>
-                    <div className="bg-gray-100 p-6 rounded-xl">
+                    <div className="surface-card bg-teal-50/40 p-5 leading-8 sm:p-7">
                         <h3 className="text-2xl font-bold mb-4">
                             คุณสมบัติผู้บริจาคอวัยวะ
                         </h3>
@@ -80,7 +62,7 @@ export default async function OrganDonationPage({ params }: { params: { lang: La
                     <a
                         href="https://organdonate.redcross.or.th/"
                         target="_blank"
-                        className="inline-block bg-[rgb(var(--color-primary))] hover:bg-[rgb(var(--color-primary-light)/0.2)] hover:text-[rgb(var(--color-primary))] text-xl text-white px-6 py-3 rounded-lg"
+                        className="btn-primary"
                     >
                         ลงทะเบียนบริจาคอวัยวะ
                     </a>

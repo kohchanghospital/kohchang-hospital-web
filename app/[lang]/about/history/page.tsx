@@ -1,5 +1,6 @@
 import { languages, Lang } from '@/i18n';
 import { getContent } from '@/app/lib/api';
+import { PublicHero } from '@/app/components/PublicUI';
 
 export default async function HistoryPage({ params }: { params: { lang: Lang } }) {
     const lang = (await params).lang;
@@ -17,27 +18,10 @@ export default async function HistoryPage({ params }: { params: { lang: Lang } }
 
     return (
         <>
-            <div
-                className="relative text-center py-24 bg-cover bg-center"
-                style={{
-                    backgroundImage: "url('/images/kohchang1.png')",
-                    backgroundPosition: "center 40%",
-                }}
-            >
-                {/* overlay ทำให้ตัวหนังสืออ่านง่าย */}
-                <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/70 to-white/10 backdrop-blur-sm"></div>
-                <div className="absolute inset-0 bg-black/20"></div>
-                <div className="relative z-10 text-gray-700">
-                    <h1 className="text-7xl font-bold text-[rgb(var(--color-primary))]">
-                        {t.history}
-                    </h1>
-                </div>
-                {/* เส้นล่าง hero */}
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-purple-400"></div>
-            </div>
+            <PublicHero title={t.history} eyebrow="Our Story" image="/images/kohchang1.png" />
             <div>
-                <section className="mx-auto max-w-4xl px-6 py-12">
-                    <div className="grid md:grid-cols-2 gap-8 mt-8 flex items-center">
+                <section className="container-page max-w-5xl py-10 sm:py-14">
+                    <div className="surface-card grid items-center gap-8 p-5 md:grid-cols-2 sm:p-8">
                         <div>
                             <h2 className="mb-4 text-2xl font-bold">{t.history_dis}</h2>
                             <div
@@ -49,22 +33,23 @@ export default async function HistoryPage({ params }: { params: { lang: Lang } }
                             <img
                                 src="/images/kohchang.png"
                                 alt="History of Koh Chang District"
-                                className="w-full h-auto rounded-lg shadow"
+                                className="aspect-[4/3] h-auto w-full rounded-xl object-cover"
                             />
                         </div>
                     </div>
-                    <div className="w-full h-px bg-gray-300 my-8"></div>
+                    <div className="surface-card mt-6 p-5 sm:p-8">
                     <h3 className="mb-4 text-xl font-bold">{t.history_es_dis}</h3>
                     <div
                         className="prose max-w-none mb-8"
                         dangerouslySetInnerHTML={{ __html: historyEsDis.body }}
                     />
-                    <div className="w-full h-px bg-gray-300 my-8"></div>
+                    </div><div className="surface-card mt-6 p-5 sm:p-8">
                     <h2 className="mb-4 text-2xl font-bold">{t.history_hos}</h2>
                     <div
                         className="prose max-w-none"
                         dangerouslySetInnerHTML={{ __html: historyHos.body }}
                     />
+                    </div>
                 </section>
             </div>
         </>

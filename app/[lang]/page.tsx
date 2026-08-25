@@ -53,35 +53,35 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
     const knowledges: Knowledge[] = knowledge.data.knowledge;
     const news: Announcement[] = announcements.data.news;
     const procurement: Announcement[] = announcements.data.procurement;
-    console.log("API announcements:", announcements);
-    console.log("API knowledges:", knowledge);
     return (
         // ✅ UI IMPROVED
-        <div className="bg-[#F8FAFC]">
-            <header className="relative overflow-hidden px-4 py-20 text-center sm:py-24 lg:py-28">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(196,181,253,0.45),transparent_34%),linear-gradient(135deg,#F8FAFC_0%,#FFFFFF_48%,rgba(167,139,250,0.22)_100%)]" />
-                <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#C4B5FD] to-transparent" />
-                <div className="relative mx-auto max-w-4xl animate-soft-reveal">
-                    <span className="inline-flex rounded-full border border-[#C4B5FD]/70 bg-white/80 px-4 py-2 text-sm font-medium text-[#7C3AED] shadow-sm">
+        <div>
+            <header className="relative isolate overflow-hidden bg-[rgb(var(--color-secondary))]">
+                <div className="absolute inset-0 -z-20 bg-[url('/images/kohchang.png')] bg-cover bg-center opacity-30" />
+                <div className="absolute inset-0 -z-10 bg-[linear-gradient(100deg,rgba(15,42,61,.98)_8%,rgba(15,76,92,.9)_58%,rgba(8,119,128,.7))]" />
+                <div className="container-page py-16 sm:py-20 lg:py-24">
+                <div className="max-w-3xl animate-soft-reveal">
+                    <span className="inline-flex rounded-lg border border-white/20 bg-white/10 px-3 py-1.5 text-sm font-medium text-teal-100 backdrop-blur">
                         Koh Chang Hospital
                     </span>
-                    <h2 className="mt-6 text-3xl font-bold leading-tight tracking-normal text-[#1E293B] sm:text-4xl lg:text-5xl">
+                    <h1 className="mt-5 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
                         {t.hos_name}
-                    </h2>
-                    <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[#64748B] sm:text-lg">
+                    </h1>
+                    <p className="mt-5 max-w-2xl text-base leading-8 text-slate-200 sm:text-lg">
                         {t.sub_about}
                     </p>
                     <a
                         href={`/${(await params).lang}/about`}
-                        className="mt-8 inline-flex items-center justify-center rounded-full bg-[#7C3AED] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-600/20 transition-all duration-300 hover:scale-105 hover:bg-[#6D28D9] active:scale-95"
+                        className="btn-primary mt-7 !bg-white !text-[rgb(var(--color-secondary))] hover:!bg-teal-50"
                     >
                         {t.about}
                         <Icons.ArrowRight className="ml-2" />
                     </a>
                 </div>
+                </div>
             </header>
 
-            <section className="mx-auto max-w-7xl space-y-12 px-4 py-12 sm:px-6 lg:px-8">
+            <section className="container-page space-y-12 py-10 sm:py-14">
                 <ContentSection
                     title={t.latest_news}
                     href={`/${(await params).lang}/announcements/news`}
@@ -93,7 +93,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                             href={`${process.env.NEXT_PUBLIC_API_URL}/announcements/file/${item.id}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group inline-block w-full text-sm text-[#7C3AED]"
+                            className="group inline-block w-full text-sm text-[rgb(var(--color-primary))]"
                         >
                             <ArticleCard
                                 icon="/images/file_b.png"
@@ -115,7 +115,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                             href={`${process.env.NEXT_PUBLIC_API_URL}/knowledges/file/${item.id}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group inline-block w-full text-sm text-[#7C3AED]"
+                            className="group inline-block w-full text-sm text-[rgb(var(--color-primary))]"
                         >
                             <ArticleCard
                                 icon="/images/book_rb.png"
@@ -137,7 +137,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                             href={`${process.env.NEXT_PUBLIC_API_URL}/announcements/file/${item.id}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group inline-block w-full text-sm text-[#7C3AED]"
+                            className="group inline-block w-full text-sm text-[rgb(var(--color-primary))]"
                         >
                             <ArticleCard
                                 icon="/images/file_y.png"
@@ -168,12 +168,12 @@ function ContentSection({
         <section className="animate-soft-reveal">
             <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
                 <div>
-                    <span className="mb-2 block h-1 w-10 rounded-full bg-[#7C3AED]" />
-                    <h3 className="text-2xl font-bold text-[#1E293B]">{title}</h3>
+                    <span className="mb-2 block h-1 w-10 rounded-full bg-[rgb(var(--color-primary))]" />
+                    <h2 className="text-2xl font-bold text-[rgb(var(--color-secondary))]">{title}</h2>
                 </div>
                 <a
                     href={href}
-                    className="group inline-flex items-center self-start rounded-full border border-[#E5E7EB] bg-white px-4 py-2 text-sm font-medium text-[#64748B] shadow-sm transition-all duration-300 hover:scale-105 hover:border-[#C4B5FD] hover:bg-[#7C3AED]/10 hover:text-[#7C3AED] active:scale-95 sm:self-auto"
+                    className="btn-outline self-start sm:self-auto"
                 >
                     {seeAll}
                     <Icons.ArrowRight className="ml-2 hidden group-hover:inline " />
@@ -197,9 +197,9 @@ function ArticleCard({
 }) {
     return (
         // ✅ UI IMPROVED
-        <div className="h-full rounded-xl border border-[#E5E7EB] bg-white p-5 shadow-md shadow-slate-900/5 transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-[1.02] group-hover:border-[#C4B5FD] group-hover:bg-[#7C3AED]/[0.04] group-hover:shadow-lg group-hover:shadow-purple-700/10">
+        <div className="surface-card h-full p-5 transition duration-200 group-hover:-translate-y-0.5 group-hover:border-teal-200 group-hover:shadow-[var(--shadow-md)]">
             <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#7C3AED]/10">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-teal-50">
                     <Image
                         src={icon}
                         alt="file icon"
@@ -209,10 +209,10 @@ function ArticleCard({
                     />
                 </div>
                 <div className="min-w-0">
-                    <h4 className="line-clamp-2 text-base font-semibold leading-7 text-[#1E293B] transition-colors duration-300 group-hover:text-[#7C3AED]">
+                    <h3 className="line-clamp-2 text-base font-semibold leading-7 text-[rgb(var(--color-secondary))] transition-colors group-hover:text-[rgb(var(--color-primary-dark))]">
                         {title}
-                    </h4>
-                    <p className="mt-2 text-xs font-medium text-[#64748B]">
+                    </h3>
+                    <p className="mt-2 text-xs font-medium text-slate-500">
                         {new Date(createdAt).toLocaleDateString("th-TH")}
                     </p>
                 </div>

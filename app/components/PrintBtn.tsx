@@ -7,7 +7,8 @@ export default function DetailActions() {
     return (
         <button
             onClick={() => window.print()}
-            className="rounded-lg bg-blue-600 px-4 py-2 text-sm text-white"
+            className="btn-outline !h-11 !w-11 !px-0"
+            aria-label="พิมพ์"
         >
             <Icons.PrinterFills className="text-lg" />
         </button>

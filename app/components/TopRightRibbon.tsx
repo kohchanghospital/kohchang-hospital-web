@@ -3,7 +3,7 @@ import Image from 'next/image'
 export default function TopRightRibbon() {
     return (
         <div>
-            <div className="fixed top-0 right-0 z-50 pointer-events-none sm:block hidden">
+            <div className="pointer-events-none fixed right-0 top-0 z-100 hidden sm:block">
                 <Image
                     src="/images/black_ribbon_top_right1.png"
                     alt="mourning ribbon"
@@ -12,7 +12,7 @@ export default function TopRightRibbon() {
                     priority
                 />
             </div>
-            <div className="fixed top-0 right-0 z-50 pointer-events-none md:hidden">
+            <div className="pointer-events-none fixed right-0 top-0 z-100 md:hidden">
                 <Image
                     src="/images/black_ribbon_top_right1.png"
                     alt="mourning ribbon"

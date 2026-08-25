@@ -1,8 +1,6 @@
 import { LanguageProvider } from '@/context/LanguageContext';
-import TopRightRibbon from '@/app/components/TopRightRibbon'
 import { Noto_Sans_Thai, Inter } from 'next/font/google';
-import { Navbar } from '../components/Navbar';
-import { Footer } from '../components/Footer';
+import { SiteChrome } from '../components/SiteChrome';
 import { Lang } from '@/i18n';
 import '../globals.css';
 
@@ -36,15 +34,7 @@ export default async function LangLayout({
     <html lang={lang} className={`${notoTh.variable} ${inter.variable}`}>
       <body className="flex min-h-screen flex-col">
         <LanguageProvider lang={lang}>
-          <Navbar lang={lang} />
-
-          {/* content */}
-          <main className="flex-1">
-            <TopRightRibbon />
-            {children}
-          </main>
-
-          <Footer lang={lang} />
+          <SiteChrome lang={lang}>{children}</SiteChrome>
         </LanguageProvider>
       </body>
     </html>

@@ -1,43 +1,17 @@
 import { languages, Lang } from "@/i18n";
 import CalendarClient from '@/app/components/CalendarClient'
+import { PublicHero } from '@/app/components/PublicUI'
 
 export default async function CalendarPage({ params }: { params: { lang: Lang } | Promise<{ lang: Lang }> }) {
-    const t = languages[(await params).lang];
-    const events = [
-        {
-            id: '1',
-            title: '1.สสจ.ตราด - ประชุมแนวทางตรวจสอบเวชระเบียน + รับ - ส่งเอกสาร\n2.รพ.ตราด - รับ ส่ง อุปกรณ์ส่งนึ่ง อบแก๊ส - แผนกจ่ายกลาง รพ.ตราด + แผนกซักฟอกรับเสื้อผ้าคนไข้ + ส่งเลือด\n3.รพ.แหลมงอบ - ส่งเลือด',
-            start: '2026-01-15',
-        },
-        {
-            id: '2',
-            title: '1.สสจ.ตราด - ประชุมแนวทางตรวจสอบเวชระเบียน + รับ - ส่งเอกสาร\n2.รพ.ตราด - รับ ส่ง อุปกรณ์ส่งนึ่ง อบแก๊ส - แผนกจ่ายกลาง รพ.ตราด + แผนกซักฟอกรับเสื้อผ้าคนไข้ + ส่งเลือด\n3.รพ.แหลมงอบ - ส่งเลือด',
-            start: '2026-01-15',
-        },
-    ];
+    const { lang } = await params;
+    const t = languages[lang];
     return (
         <>
-            <div
-                className="relative text-center py-24 bg-cover bg-center"
-                style={{
-                    backgroundImage: "url('/images/calendar.png')",
-                }}
-            >
-                {/* overlay ทำให้ตัวหนังสืออ่านง่าย */}
-                <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/70 to-white/10 backdrop-blur-sm"></div>
-                <div className="absolute inset-0 bg-black/20"></div>
-                <div className="relative z-10 text-gray-700">
-                    <h1 className="text-7xl font-bold text-[rgb(var(--color-primary))]">
-                        {t.activity_calendar}
-                    </h1>
-                </div>
-                {/* เส้นล่าง hero */}
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-purple-400"></div>
-            </div>
+            <PublicHero title={t.activity_calendar} eyebrow="Calendar" image="/images/calendar.png" />
             <div>
-                <section className="mx-auto max-w-4xl px-6 py-12">
-                    <div className="rounded-xl p-6 shadow-xl">
-                        <CalendarClient events={events} lang={(await params).lang} base="about/calendar" />
+                <section className="container-page max-w-6xl py-10 sm:py-14">
+                    <div className="surface-card overflow-x-auto p-3 sm:p-6">
+                        <CalendarClient lang={lang} base="about/calendar" compact />
                     </div>
                 </section>
             </div>

@@ -1,6 +1,7 @@
 import { languages, Lang } from "@/i18n";
 import Image from 'next/image'
 import Pagination from "@/app/components/Pagination";
+import { EmptyState, PublicHero } from "@/app/components/PublicUI";
 
 type Announcement = {
     id: number;
@@ -40,29 +41,12 @@ export default async function knowledgePage({
 
     return (
         <>
-            {/* ✅ UI IMPROVED */}
-            <div
-                className="relative overflow-hidden bg-cover bg-center px-4 py-20 text-center md:py-24"
-                style={{
-                    backgroundImage: "url('/images/knowledge.png')",
-                    backgroundPosition: "center 15%",
-                }}
-            >
-                <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-white/80 to-[#C4B5FD]/30 backdrop-blur-sm"></div>
-                <div className="relative z-10 text-[#1E293B]">
-                    <h1 className="text-2xl font-bold text-[#1E293B] md:text-3xl">
-                        {t.knowledge}
-                    </h1>
-                </div>
-                <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-[#7C3AED] via-[#A78BFA] to-[#C4B5FD]"></div>
-            </div>
+            <PublicHero title={t.knowledge} eyebrow="Health Knowledge" image="/images/knowledge.png" />
 
             {/* ✅ UI IMPROVED */}
-            <section className="mx-auto max-w-4xl px-6 py-12">
+            <section className="container-page max-w-4xl py-10 sm:py-14">
                 {knowledge.length === 0 ? (
-                    <div className="py-10 text-center text-[#64748B]">
-                        ไม่พบข้อมูล
-                    </div>
+                    <EmptyState title="ไม่พบข้อมูล" description="ยังไม่มีบทความความรู้ในขณะนี้" />
                 ) : (
                     <div className="space-y-4">
                         {knowledge.map((item) => (
@@ -71,9 +55,9 @@ export default async function knowledgePage({
                                 href={`${process.env.NEXT_PUBLIC_API_URL}/knowledges/file/${item.id}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="group inline-block w-full text-sm text-[#7C3AED]"
+                                className="group inline-block w-full text-sm text-[rgb(var(--color-primary))]"
                             >
-                                <div key={item.id} className="rounded-xl border border-gray-200 bg-white p-4 shadow-md transition-all duration-300 ease-out hover:scale-[1.02] hover:bg-[rgba(124,58,237,0.05)] hover:shadow-lg md:p-4">
+                                <div className="surface-card p-4 transition duration-200 group-hover:-translate-y-0.5 group-hover:border-teal-200 group-hover:shadow-[var(--shadow-md)]">
                                     <div className="flex items-start gap-4">
                                         <Image
                                             src="/images/book_rb.png"
@@ -83,8 +67,8 @@ export default async function knowledgePage({
                                             priority
                                         />
                                         <div className="min-w-0">
-                                            <h4 className="line-clamp-2 text-base font-semibold leading-relaxed text-[#1E293B] transition group-hover:text-[#7C3AED]">{item.title}</h4>
-                                            <p className="mt-2 text-xs text-[#64748B]">
+                                            <h2 className="line-clamp-2 text-base font-semibold leading-relaxed text-[rgb(var(--color-secondary))] transition group-hover:text-[rgb(var(--color-primary-dark))]">{item.title}</h2>
+                                            <p className="mt-2 text-xs text-slate-500">
                                                 {new Date(item.created_at).toLocaleDateString("th-TH")}
                                             </p>
                                         </div>

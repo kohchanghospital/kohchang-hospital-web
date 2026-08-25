@@ -18,11 +18,11 @@ export default function CopyAccount({ account }: { account: string }) {
     return (
         <button
             onClick={handleCopy}
-            className="inline-flex items-center gap-2 text-black hover:underline"
+            className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-teal-50 px-3 font-semibold text-[rgb(var(--color-primary-dark))] hover:bg-teal-100"
         >
             <span>{account}</span>
 
-            <Icons.Copy className="text-xs text-gray-500 hover:text-black" />
+            <Icons.Copy className="text-sm text-[rgb(var(--color-primary))]" />
 
             {copied && (
                 <span className="text-green-600 text-sm">

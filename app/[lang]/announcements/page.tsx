@@ -1,51 +1,21 @@
-import Link from 'next/link';
 import { languages, Lang } from '@/i18n';
-
+import { HubCard, PublicHero } from '@/app/components/PublicUI';
 
 export default async function AnnouncementsPage({ params }: { params: { lang: Lang } | Promise<{ lang: Lang }> }) {
-    const t = languages[(await params).lang];
-    return (
-        <>
-            {/* ✅ UI IMPROVED */}
-            <div
-                className="relative overflow-hidden bg-cover bg-center px-4 py-20 text-center md:py-24"
-                style={{
-                    backgroundImage: "url('/images/announcement.png')",
-                    backgroundPosition: "center 20%",
-                }}
-            >
-                <div className="absolute inset-0 bg-gradient-to-br from-white/95 via-white/80 to-[#C4B5FD]/30 backdrop-blur-sm"></div>
-                <div className="relative z-10 text-[#1E293B]">
-                    <h1 className="text-2xl font-bold text-[#1E293B] md:text-3xl">
-                        {t.announcements}
-                    </h1>
-                </div>
-                <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-[#7C3AED] via-[#A78BFA] to-[#C4B5FD]"></div>
-            </div>
-
-            {/* ✅ UI IMPROVED */}
-            <section className="mx-auto max-w-5xl px-6 py-12">
-                <div className="grid gap-6 md:grid-cols-2">
-                    <Link
-                        href={`/${(await params).lang}/announcements/news`}
-                        className="group cursor-pointer rounded-xl border border-gray-200 bg-white p-4 shadow-md transition-all duration-300 ease-out hover:scale-[1.02] hover:bg-[rgba(124,58,237,0.05)] hover:shadow-lg md:p-5"
-                    >
-                        <h3 className="text-xl font-semibold text-[#1E293B] transition group-hover:text-[#7C3AED]">{t.news}</h3>
-                        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-[#64748B] md:text-base">
-                            ข่าวกิจกรรม ข่าวประชาสัมพันธ์ของโรงพยาบาล
-                        </p>
-                    </Link>
-                    <Link
-                        href={`/${(await params).lang}/announcements/procurement`}
-                        className="group cursor-pointer rounded-xl border border-gray-200 bg-white p-4 shadow-md transition-all duration-300 ease-out hover:scale-[1.02] hover:bg-[rgba(124,58,237,0.05)] hover:shadow-lg md:p-5"
-                    >
-                        <h3 className="text-xl font-semibold text-[#1E293B] transition group-hover:text-[#7C3AED]">{t.procurement}</h3>
-                        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-[#64748B] md:text-base">
-                            ประกาศจัดซื้อจัดจ้าง TOR และผลการจัดซื้อ
-                        </p>
-                    </Link>
-                </div>
-            </section>
-        </>
-    );
+  const { lang } = await params;
+  const t = languages[lang];
+  return (
+    <>
+      <PublicHero title={t.announcements} eyebrow="Information Center" image="/images/announcement.png" />
+      <section className="container-page py-10 sm:py-14">
+        <div className="mx-auto grid max-w-5xl gap-5 md:grid-cols-2">
+          <HubCard href={`/${lang}/announcements/news`} title={t.news} description={lang === 'th' ? 'ข่าวกิจกรรมและข่าวประชาสัมพันธ์ของโรงพยาบาล' : 'Hospital news, activities and public information'} icon={<NewsIcon />} />
+          <HubCard href={`/${lang}/announcements/procurement`} title={t.procurement} description={lang === 'th' ? 'ประกาศจัดซื้อจัดจ้าง TOR และผลการจัดซื้อ' : 'Procurement notices, terms of reference and results'} icon={<DocumentIcon />} />
+        </div>
+      </section>
+    </>
+  );
 }
+
+function NewsIcon() { return <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5" strokeLinecap="round" /></svg>; }
+function DocumentIcon() { return <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M7 3h7l4 4v14H7zM14 3v5h5M9 13h6M9 17h6" strokeLinecap="round" /></svg>; }

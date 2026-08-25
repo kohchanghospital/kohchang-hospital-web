@@ -1,6 +1,8 @@
 import { languages, Lang } from "@/i18n";
 import { Icons } from "@/app/icons/icons";
 import CopyAccount from "@/app/components/CopyAccount";
+import { PublicHero } from "@/app/components/PublicUI";
+import { SafeImage } from "@/app/components/SafeImage";
 
 type DonationSettings = {
     bank_name: string;
@@ -73,50 +75,32 @@ export default async function CashDonationPage({ params }: { params: { lang: Lan
 
     return (
         <>
-            {/* HERO */}
-            <div
-                className="relative text-center py-24 bg-cover bg-center"
-                style={{
-                    backgroundImage: "url('/images/cash.png')",
-                    backgroundPosition: "center 40%",
-                }}
-            >
-                <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/70 to-white/10 backdrop-blur-sm"></div>
-                <div className="absolute inset-0 bg-black/20"></div>
-
-                <div className="relative z-10 text-gray-700">
-                    <h1 className="text-7xl font-bold text-[rgb(var(--color-primary))]">
-                        {t.cash_donation}
-                    </h1>
-                </div>
-
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-purple-400"></div>
-            </div>
+            <PublicHero title={t.cash_donation} eyebrow="Koh Chang Hospital" image="/images/cash.png" />
 
             {/* CONTENT */}
-            <section className="mx-auto max-w-4xl px-6 py-12 space-y-12">
+            <section className="container-page max-w-5xl space-y-8 py-10 sm:py-14">
 
                 {/* INTRO */}
-                <div className="text-center">
-                    <h2 className="text-2xl font-bold mb-4">
+                <div className="mx-auto max-w-3xl text-center">
+                    <h2 className="break-words text-2xl font-bold leading-relaxed text-[rgb(var(--color-secondary))]">
                         สมทบทุนเพื่อสนับสนุนการดำเนินงานของโรงพยาบาล
                     </h2>
 
-                    <p className="text-gray-600">
+                    <p className="mt-3 leading-8 text-slate-600">
                         {settings.description}
                     </p>
                 </div>
 
                 {/* BANK ACCOUNT */}
-                <div className="bg-white rounded-xl shadow-md p-6">
-                    <h3 className="text-xl font-semibold mb-4 text-[rgb(var(--color-primary))]">
+                <div className="surface-card p-5 sm:p-7">
+                    <h3 className="text-xl font-semibold text-[rgb(var(--color-secondary))]">
                         บัญชีสำหรับบริจาค
                     </h3>
 
-                    <div className="space-y-2 text-gray-700">
+                    <div className="mt-5 grid gap-3 text-slate-700 sm:grid-cols-2">
                         <p><strong>ธนาคาร:</strong> {settings.bank_name}</p>
                         <p><strong>ชื่อบัญชี:</strong> {settings.account_name}</p>
-                        <p className="flex items-start gap-2">
+                        <p className="flex items-start gap-2 sm:col-span-2">
                             <strong>เลขบัญชี:</strong>
 
                             <span className="relative inline-block pr-5">
@@ -127,36 +111,37 @@ export default async function CashDonationPage({ params }: { params: { lang: Lan
                 </div>
 
                 {/* QR CODE */}
-                <div className="text-center">
-                    <h3 className="text-xl font-semibold mb-4">
+                <div className="surface-card p-5 text-center sm:p-8">
+                    <h3 className="text-xl font-semibold text-[rgb(var(--color-secondary))]">
                         สแกน QR Code เพื่อบริจาค
                     </h3>
 
-                    <img
+                    <SafeImage
                         src={settings.qr_code_image_url || fallbackSettings.qr_code_image_url || ""}
-                        className="mx-auto w-80 rounded-lg shadow"
-                        alt="QR Donation"
+                        fallback="/images/qr-donation.png"
+                        className="mx-auto mt-5 aspect-square w-full max-w-72 rounded-xl border border-[rgb(var(--color-border))] bg-white object-contain p-3"
+                        alt={`QR code ${t.cash_donation}`}
                     />
                     <a
                         href={settings.qr_code_image_url || fallbackSettings.qr_code_image_url || ""}
                         download
-                        className="inline-block mt-4 px-4 py-2 bg-[rgb(var(--color-primary))] hover:bg-[rgb(var(--color-primary-light)/0.2)] hover:text-[rgb(var(--color-primary))] text-white rounded"
+                        className="btn-primary mt-5"
                     >
                         ดาวน์โหลด QR
                     </a>
                 </div>
 
                 {/* HOW TO CONFIRM */}
-                <div className="bg-gray-50 rounded-xl p-6">
-                    <h3 className="text-xl font-semibold mb-4">
+                <div className="surface-card border-l-4 !border-l-[rgb(var(--color-primary))] p-5 sm:p-7">
+                    <h3 className="text-xl font-semibold text-[rgb(var(--color-secondary))]">
                         แจ้งหลักฐานการโอนเงิน
                     </h3>
 
-                    <p className="text-gray-600 mb-3">
+                    <p className="mb-3 mt-3 text-slate-600">
                         กรุณาส่งหลักฐานการโอนเงินมาที่
                     </p>
 
-                    <ul className="space-y-2 text-gray-700">
+                    <ul className="space-y-3 text-slate-700">
                         <li><Icons.Gmail className="text-red-500 inline mr-2" /> Email: <a href={`mailto:${settings.email}`} className="hover:text-[rgb(var(--color-primary-light))]">{settings.email}</a></li>
                         <li><Icons.Fax className="text-xl text-gray-500 inline mr-1" /> Fax: {settings.fax}</li>
                         <li><Icons.Facebook className="text-blue-500 inline mr-2" /> Facebook: <a href={settings.facebook} target="_blank" className="hover:text-[rgb(var(--color-primary-light))]">{facebookLabel(settings.facebook)}</a></li>
@@ -164,12 +149,12 @@ export default async function CashDonationPage({ params }: { params: { lang: Lan
                 </div>
 
                 {/* DONATE IN PERSON */}
-                <div className="bg-white rounded-xl shadow-md p-6">
-                    <h3 className="text-xl font-semibold mb-4 text-[rgb(var(--color-primary))]">
+                <div className="surface-card p-5 sm:p-7">
+                    <h3 className="text-xl font-semibold text-[rgb(var(--color-secondary))]">
                         บริจาคด้วยตนเองที่โรงพยาบาล
                     </h3>
 
-                    <div className="space-y-3 text-gray-700">
+                    <div className="mt-4 space-y-3 leading-7 text-slate-700">
                         <p>
                             ท่านสามารถเดินทางมาบริจาคเงินสมทบทุนได้ด้วยตนเองที่
                             <span className="font-semibold"> {settings.organization_name}</span>
@@ -187,10 +172,10 @@ export default async function CashDonationPage({ params }: { params: { lang: Lan
                 </div>
 
                 {/* GOOGLE MAP */}
-                <div className="rounded-xl overflow-hidden shadow-md">
+                <div className="surface-card overflow-hidden">
                     <iframe
                         src={settings.google_map_embed_url}
-                        className="w-full h-72 border-0"
+                        className="h-72 w-full border-0"
                         loading="lazy"
                         title={`แผนที่ ${settings.organization_name}`}
                     ></iframe>

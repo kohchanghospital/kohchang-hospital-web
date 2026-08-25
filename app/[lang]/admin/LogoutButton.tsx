@@ -18,9 +18,9 @@ export default function LogoutButton() {
     return (
         <button
             onClick={handleLogout}
-            className="rounded bg-red-500 px-4 py-2 text-white"
+            className="btn-outline !border-red-200 !text-red-700 hover:!bg-red-50"
         >
-            Logout
+            ออกจากระบบ
         </button>
     );
 }
