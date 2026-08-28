@@ -18,7 +18,7 @@ export default function CopyAccount({ account }: { account: string }) {
     return (
         <button
             onClick={handleCopy}
-            className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-teal-50 px-3 font-semibold text-[rgb(var(--color-primary-dark))] hover:bg-teal-100"
+            className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-[rgb(var(--color-primary-light))] px-3 font-semibold text-[rgb(var(--color-primary-hover))] hover:bg-[rgb(var(--color-primary-border))]"
         >
             <span>{account}</span>
 

@@ -58,10 +58,10 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
         <div>
             <header className="relative isolate overflow-hidden bg-[rgb(var(--color-secondary))]">
                 <div className="absolute inset-0 -z-20 bg-[url('/images/kohchang.png')] bg-cover bg-center opacity-30" />
-                <div className="absolute inset-0 -z-10 bg-[linear-gradient(100deg,rgba(15,42,61,.98)_8%,rgba(15,76,92,.9)_58%,rgba(8,119,128,.7))]" />
+                <div className="absolute inset-0 -z-10 bg-[linear-gradient(110deg,#211A3A_0%,#352650_45%,#4C2A6A_100%)]" />
                 <div className="container-page py-16 sm:py-20 lg:py-24">
                 <div className="max-w-3xl animate-soft-reveal">
-                    <span className="inline-flex rounded-lg border border-white/20 bg-white/10 px-3 py-1.5 text-sm font-medium text-teal-100 backdrop-blur">
+                    <span className="inline-flex rounded-lg border border-white/20 bg-white/10 px-3 py-1.5 text-sm font-medium text-[rgb(var(--color-primary-light))] backdrop-blur">
                         Koh Chang Hospital
                     </span>
                     <h1 className="mt-5 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
@@ -72,7 +72,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                     </p>
                     <a
                         href={`/${(await params).lang}/about`}
-                        className="btn-primary mt-7 !bg-white !text-[rgb(var(--color-secondary))] hover:!bg-teal-50"
+                        className="btn-primary mt-7 !bg-white !text-[rgb(var(--color-secondary))] hover:!bg-[rgb(var(--color-primary-light))]"
                     >
                         {t.about}
                         <Icons.ArrowRight className="ml-2" />
@@ -197,9 +197,9 @@ function ArticleCard({
 }) {
     return (
         // ✅ UI IMPROVED
-        <div className="surface-card h-full p-5 transition duration-200 group-hover:-translate-y-0.5 group-hover:border-teal-200 group-hover:shadow-[var(--shadow-md)]">
+        <div className="surface-card h-full p-5 transition duration-200 group-hover:-translate-y-0.5 group-hover:border-[rgb(var(--color-primary-border))] group-hover:shadow-[var(--shadow-md)]">
             <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-teal-50">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[rgb(var(--color-primary-light))]">
                     <Image
                         src={icon}
                         alt="file icon"
@@ -209,7 +209,7 @@ function ArticleCard({
                     />
                 </div>
                 <div className="min-w-0">
-                    <h3 className="line-clamp-2 text-base font-semibold leading-7 text-[rgb(var(--color-secondary))] transition-colors group-hover:text-[rgb(var(--color-primary-dark))]">
+                    <h3 className="line-clamp-2 text-base font-semibold leading-7 text-[rgb(var(--color-secondary))] transition-colors group-hover:text-[rgb(var(--color-primary-hover))]">
                         {title}
                     </h3>
                     <p className="mt-2 text-xs font-medium text-slate-500">

@@ -2,26 +2,28 @@
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
 :root {
-  --color-primary: 8 119 128;
-  --color-primary-light: 204 251 241;
-  --color-primary-dark: 15 76 92;
-  --color-secondary: 15 42 61;
-  --color-accent: 14 165 164;
+  --color-primary: 109 74 162;
+  --color-primary-hover: 89 57 137;
+  --color-primary-light: 240 235 247;
+  --color-primary-dark: 53 38 80;
+  --color-primary-border: 207 192 226;
+  --color-secondary: 53 38 80;
+  --color-accent: 139 107 184;
   --color-success: 22 163 74;
   --color-warning: 217 119 6;
   --color-danger: 220 38 38;
   --color-info: 2 132 199;
-  --color-background: 246 249 250;
+  --color-background: 248 246 251;
   --color-surface: 255 255 255;
-  --color-foreground: 30 41 59;
-  --color-muted: 100 116 139;
-  --color-border: 220 229 232;
-  --color-focus: 13 148 136;
+  --color-foreground: 41 34 56;
+  --color-muted: 111 104 122;
+  --color-border: 226 220 233;
+  --color-focus: 109 74 162;
   --radius-sm: .5rem;
   --radius-md: .75rem;
   --radius-lg: 1rem;
-  --shadow-sm: 0 1px 2px rgba(15, 42, 61, .05);
-  --shadow-md: 0 10px 30px rgba(15, 42, 61, .08);
+  --shadow-sm: 0 1px 2px rgba(53, 38, 80, .05);
+  --shadow-md: 0 10px 30px rgba(53, 38, 80, .08);
 }
 
 * { box-sizing: border-box; }
@@ -49,13 +51,6 @@ img { max-width: 100%; }
 .text-primary-light { color: rgb(var(--color-primary-light)); }
 .text-primary-dark { color: rgb(var(--color-primary-dark)); }
 .border-primary { border-color: rgb(var(--color-primary)); }
-/* Compatibility mapping for legacy utilities while pages migrate to tokens. */
-.text-\[\#7C3AED\] { color: rgb(var(--color-primary)) !important; }
-.hover\:text-\[\#7C3AED\]:hover { color: rgb(var(--color-primary-dark)) !important; }
-.bg-\[\#7C3AED\] { background-color: rgb(var(--color-primary)) !important; }
-.bg-\[\#C4B5FD\] { background-color: rgb(var(--color-primary-light)) !important; }
-.border-\[\#C4B5FD\] { border-color: rgb(var(--color-primary) / .35) !important; }
-
 @layer components {
   .container-page { width: min(100% - 2rem, 80rem); margin-inline: auto; }
   .surface-card { border: 1px solid rgb(var(--color-border)); border-radius: var(--radius-lg); background: rgb(var(--color-surface)); box-shadow: var(--shadow-sm); }
@@ -65,12 +60,12 @@ img { max-width: 100%; }
     transition: background-color .18s ease, border-color .18s ease, color .18s ease, box-shadow .18s ease, transform .18s ease;
   }
   .btn-primary { background: rgb(var(--color-primary)); color: white; box-shadow: 0 5px 16px rgb(var(--color-primary) / .18); }
-  .btn-primary:hover { background: rgb(var(--color-primary-dark)); transform: translateY(-1px); }
+  .btn-primary:hover { background: rgb(var(--color-primary-hover)); transform: translateY(-1px); }
   .btn-secondary { background: rgb(var(--color-secondary)); color: white; }
   .btn-outline { border: 1px solid rgb(var(--color-border)); background: white; color: rgb(var(--color-secondary)); }
-  .btn-outline:hover { border-color: rgb(var(--color-primary) / .45); background: rgb(var(--color-primary-light) / .45); color: rgb(var(--color-primary-dark)); }
+  .btn-outline:hover { border-color: rgb(var(--color-primary-border)); background: rgb(var(--color-primary-light)); color: rgb(var(--color-primary-hover)); }
   .btn-ghost { color: rgb(var(--color-muted)); }
-  .btn-ghost:hover { background: rgb(var(--color-background)); color: rgb(var(--color-primary-dark)); }
+  .btn-ghost:hover { background: rgb(var(--color-background)); color: rgb(var(--color-primary-hover)); }
   .btn-danger { background: rgb(var(--color-danger)); color: white; }
   .field-control { min-height: 2.75rem; width: 100%; border: 1px solid rgb(var(--color-border)); border-radius: var(--radius-md); background: white; padding: .65rem .8rem; color: rgb(var(--color-foreground)); }
   .field-control:focus { border-color: rgb(var(--color-primary)); box-shadow: 0 0 0 3px rgb(var(--color-primary) / .12); outline: 0; }
@@ -79,19 +74,19 @@ img { max-width: 100%; }
 
 .prose { color: rgb(var(--color-foreground)); line-height: 1.85; }
 .prose :where(h1,h2,h3,h4) { color: rgb(var(--color-secondary)); line-height: 1.35; }
-.prose a { color: rgb(var(--color-primary-dark)); text-underline-offset: 3px; }
+.prose a { color: rgb(var(--color-primary-hover)); text-underline-offset: 3px; }
 
 .fc { --fc-border-color: rgb(var(--color-border)); --fc-today-bg-color: rgb(var(--color-primary-light) / .55); }
 .fc .fc-toolbar-title { color: rgb(var(--color-secondary)); font-size: clamp(1.1rem, 3vw, 1.45rem); font-weight: 700; }
 .fc .fc-button-primary { border-color: rgb(var(--color-primary)); background: rgb(var(--color-primary)); box-shadow: none; text-transform: capitalize; }
-.fc .fc-button-primary:hover, .fc .fc-button-primary:not(:disabled).fc-button-active { border-color: rgb(var(--color-primary-dark)); background: rgb(var(--color-primary-dark)); }
+.fc .fc-button-primary:hover, .fc .fc-button-primary:not(:disabled).fc-button-active { border-color: rgb(var(--color-primary-hover)); background: rgb(var(--color-primary-hover)); }
 .fc .fc-button:disabled { border-color: rgb(var(--color-border)); background: rgb(var(--color-muted)); opacity: .55; }
 .fc .fc-col-header-cell { background: rgb(var(--color-background)); color: rgb(var(--color-secondary)); font-weight: 600; }
 .fc .fc-col-header-cell-cushion, .fc .fc-daygrid-day-number { padding: .55rem; }
 .fc .fc-daygrid-event { cursor: pointer; border: 0; border-radius: .4rem; background: rgb(var(--color-primary)); padding: .25rem .4rem; transition: background-color .18s ease, transform .18s ease, box-shadow .18s ease; }
-.fc .fc-daygrid-event:hover { background: rgb(var(--color-primary-dark)); box-shadow: 0 3px 10px rgb(var(--color-secondary) / .18); transform: translateY(-1px); }
+.fc .fc-daygrid-event:hover { background: rgb(var(--color-primary-hover)); box-shadow: 0 3px 10px rgb(var(--color-secondary) / .18); transform: translateY(-1px); }
 .fc .fc-daygrid-event:focus-visible { outline: 3px solid rgb(var(--color-focus) / .4); outline-offset: 2px; }
-.fc .fc-daygrid-more-link { color: rgb(var(--color-primary-dark)); font-weight: 700; }
+.fc .fc-daygrid-more-link { color: rgb(var(--color-primary-hover)); font-weight: 700; }
 .fc .fc-icon-chevron-left::before { content: "‹"; font-family: system-ui, sans-serif; font-size: 1.5rem; line-height: .7; }
 .fc .fc-icon-chevron-right::before { content: "›"; font-family: system-ui, sans-serif; font-size: 1.5rem; line-height: .7; }
 

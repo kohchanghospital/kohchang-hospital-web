@@ -71,7 +71,7 @@ export default function CalendarClient({ events, lang, base, compact = false, re
 
     return (
         <div className="relative min-h-96">
-            {loading && <div className="absolute inset-0 z-10 flex items-center justify-center rounded-xl bg-white/70" role="status"><div className="h-9 w-9 animate-spin rounded-full border-4 border-teal-100 border-t-teal-700" /><span className="sr-only">Loading</span></div>}
+            {loading && <div className="pointer-events-none absolute inset-0 z-10 flex items-start justify-center rounded-xl bg-white/45 pt-20 backdrop-blur-[1px]" role="status" aria-live="polite"><div className="rounded-full border border-[rgb(var(--color-border))] bg-white/95 p-2 shadow-sm"><div className="h-6 w-6 animate-spin rounded-full border-2 border-[rgb(var(--color-primary-light))] border-t-[rgb(var(--color-primary))]" /></div><span className="sr-only">Loading</span></div>}
             {error && <div className="mb-4 rounded-xl bg-red-50 px-4 py-3 text-center text-sm text-red-700">{lang === 'th' ? 'โหลดข้อมูลปฏิทินไม่สำเร็จ กรุณาลองใหม่' : 'Could not load calendar data. Please try again.'}</div>}
             <FullCalendar
                 plugins={[dayGridPlugin, interactionPlugin]}
@@ -117,7 +117,7 @@ export default function CalendarClient({ events, lang, base, compact = false, re
                         )}
                     </div>
                 )}
-                eventColor="#087780"
+                eventColor="rgb(var(--color-primary))"
                 eventTextColor="#ffffff"
                 eventClassNames={() => [
                     'cursor-pointer',

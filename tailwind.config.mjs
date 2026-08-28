@@ -10,9 +10,10 @@ const config = {
         extend: {
             colors: {
                 primary: {
-                    DEFAULT: '#6D28D9', // Purple-700
-                    hover: '#5B21B6',   // Purple-800
-                    soft: '#EDE9FE',    // Purple-100
+                    DEFAULT: '#6D4AA2',
+                    hover: '#593989',
+                    dark: '#352650',
+                    soft: '#F0EBF7',
                 },
                 accent: {
                     green: '#16A34A',

@@ -14,7 +14,7 @@ export default function AdminPage() {
                     <LogoutButton />
                 </div>
                 <section className="surface-card mt-7 p-6 sm:p-8">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-teal-50 text-[rgb(var(--color-primary))]">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[rgb(var(--color-primary-light))] text-[rgb(var(--color-primary))]">
                         <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" /><path d="M12 8v8M8 12h8" strokeLinecap="round" /></svg>
                     </div>
                     <h2 className="mt-5 text-xl font-semibold text-[rgb(var(--color-secondary))]">ระบบพร้อมใช้งาน</h2>

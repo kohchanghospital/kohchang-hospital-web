@@ -96,11 +96,11 @@ export default function ManagementTeam({ params }: { params: Promise<{ lang: str
             >
                 <div className="absolute inset-0 bg-gradient-to-r from-[rgb(var(--color-secondary))]/95 via-[rgb(var(--color-primary-dark))]/90 to-[rgb(var(--color-primary))]/75" />
                 <div className="relative z-10 mx-auto max-w-4xl animate-soft-reveal text-white">
-                    <span className="inline-flex rounded-lg border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-teal-100">Koh Chang Hospital</span>
+                    <span className="inline-flex rounded-lg border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-[rgb(var(--color-primary-light))]">Koh Chang Hospital</span>
                     <h1 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">{t.management_team}</h1>
                     <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-slate-200">{t.hos_name}</p>
                 </div>
-                <div className="absolute bottom-0 left-0 h-px w-full bg-teal-300/50" />
+                <div className="absolute bottom-0 left-0 h-px w-full bg-[rgb(var(--color-accent)/.5)]" />
             </div>
 
             <section className="mx-auto max-w-7xl px-4 py-12 text-center sm:px-6 lg:px-8 lg:py-16">
@@ -154,19 +154,19 @@ export default function ManagementTeam({ params }: { params: Promise<{ lang: str
                     onClick={() => setSelected(null)}
                 >
                     <div
-                        className="relative w-full max-w-md animate-[slideUp_.35s_ease] rounded-t-3xl border border-[#E5E7EB] bg-white p-6 text-center shadow-2xl shadow-slate-950/20 md:rounded-3xl"
+                        className="relative w-full max-w-md animate-[slideUp_.35s_ease] rounded-t-3xl border border-[rgb(var(--color-border))] bg-white p-6 text-center shadow-2xl shadow-slate-950/20 md:rounded-3xl"
                         onClick={(event) => event.stopPropagation()}
                     >
                         <button
-                            className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-[#F8FAFC] text-[#64748B] transition-all duration-300 hover:scale-105 hover:bg-red-50 hover:text-red-600 active:scale-95"
+                            className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-[rgb(var(--color-background))] text-[rgb(var(--color-muted))] transition-all duration-300 hover:scale-105 hover:bg-red-50 hover:text-red-600 active:scale-95"
                             onClick={() => setSelected(null)}
                             aria-label={lang === 'th' ? 'ปิด' : 'Close'}
                         >
                             <Icons.Close className="text-2xl" />
                         </button>
                         <PersonImage person={selected} className="mb-5 h-96 w-full rounded-2xl" />
-                        <h3 className="text-xl font-bold text-[#1E293B]">{selected.name}</h3>
-                        <p className="mt-2 whitespace-pre-line text-sm leading-7 text-[#64748B]">{selected.position}</p>
+                        <h3 className="text-xl font-bold text-[rgb(var(--color-foreground))]">{selected.name}</h3>
+                        <p className="mt-2 whitespace-pre-line text-sm leading-7 text-[rgb(var(--color-muted))]">{selected.position}</p>
                     </div>
                 </div>
             )}
@@ -179,15 +179,15 @@ function Card({ person, onClick }: { person: Person; onClick: () => void }) {
         <button
             type="button"
             onClick={onClick}
-            className="group w-72 cursor-pointer overflow-hidden rounded-xl border border-[rgb(var(--color-border))] bg-white text-center shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-teal-200 hover:shadow-[var(--shadow-md)]"
+            className="group w-72 cursor-pointer overflow-hidden rounded-xl border border-[rgb(var(--color-border))] bg-white text-center shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-[rgb(var(--color-primary-border))] hover:shadow-[var(--shadow-md)]"
         >
-            <div className="relative overflow-hidden bg-teal-50">
+            <div className="relative overflow-hidden bg-[rgb(var(--color-primary-light))]">
                 <PersonImage person={person} className="h-80 w-full transition-transform duration-500 group-hover:scale-105" />
                 <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-slate-950/25 to-transparent" />
             </div>
             <div className="p-5">
-                <h3 className="text-base font-semibold leading-7 text-[rgb(var(--color-secondary))] transition-colors group-hover:text-[rgb(var(--color-primary-dark))]">{person.name}</h3>
-                <p className="mt-2 whitespace-pre-line text-sm leading-7 text-[#64748B]">{person.position}</p>
+                <h3 className="text-base font-semibold leading-7 text-[rgb(var(--color-secondary))] transition-colors group-hover:text-[rgb(var(--color-primary-hover))]">{person.name}</h3>
+                <p className="mt-2 whitespace-pre-line text-sm leading-7 text-[rgb(var(--color-muted))]">{person.position}</p>
             </div>
         </button>
     );
@@ -196,7 +196,7 @@ function Card({ person, onClick }: { person: Person; onClick: () => void }) {
 function PersonImage({ person, className }: { person: Person; className: string }) {
     if (!person.image) {
         return (
-            <div className={`flex items-center justify-center bg-teal-50 text-7xl text-teal-200 ${className}`} aria-label={person.name}>
+            <div className={`flex items-center justify-center bg-[rgb(var(--color-primary-light))] text-7xl text-[rgb(var(--color-accent))] ${className}`} aria-label={person.name}>
                 <i className="bi bi-person-fill" aria-hidden="true" />
             </div>
         );

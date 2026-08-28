@@ -57,7 +57,7 @@ export default async function NewsPage({
                                 rel="noopener noreferrer"
                                 className="group inline-block w-full text-sm text-[rgb(var(--color-primary))]"
                             >
-                                <div className="surface-card p-4 transition duration-200 group-hover:-translate-y-0.5 group-hover:border-teal-200 group-hover:shadow-[var(--shadow-md)]">
+                                <div className="surface-card p-4 transition duration-200 group-hover:-translate-y-0.5 group-hover:border-[rgb(var(--color-primary-border))] group-hover:shadow-[var(--shadow-md)]">
                                     <div className="flex items-start gap-4">
                                         <Image
                                             src="/images/file_bb.png"
@@ -67,7 +67,7 @@ export default async function NewsPage({
                                             priority
                                         />
                                         <div className="min-w-0">
-                                            <h2 className="line-clamp-2 text-base font-semibold leading-relaxed text-[rgb(var(--color-secondary))] transition group-hover:text-[rgb(var(--color-primary-dark))]">{item.title}</h2>
+                                            <h2 className="line-clamp-2 text-base font-semibold leading-relaxed text-[rgb(var(--color-secondary))] transition group-hover:text-[rgb(var(--color-primary-hover))]">{item.title}</h2>
                                             <p className="mt-2 text-xs text-slate-500">
                                                 {new Date(item.created_at).toLocaleDateString("th-TH")}
                                             </p>

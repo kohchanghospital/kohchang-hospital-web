@@ -53,7 +53,7 @@ export function Navbar({ lang }: { lang: Lang }) {
       <a href="#main-content" className="sr-only z-[100] rounded-md bg-white px-4 py-2 focus:not-sr-only focus:fixed focus:left-4 focus:top-4">
         {lang === 'th' ? 'ข้ามไปยังเนื้อหาหลัก' : 'Skip to main content'}
       </a>
-      <header className="sticky top-0 z-50 border-b border-[rgb(var(--color-border))] bg-white/95 shadow-[0_4px_18px_rgba(15,42,61,.06)] backdrop-blur">
+      <header className="sticky top-0 z-50 border-b border-[rgb(var(--color-border))] bg-white/95 shadow-[0_4px_18px_rgba(53,38,80,.06)] backdrop-blur">
         <div className="container-page flex h-[4.75rem] items-center gap-2 sm:gap-4">
           <Link href={`/${lang}`} className="flex min-w-0 flex-1 items-center gap-2.5 sm:gap-3 lg:flex-none" aria-label={t.hos_name}>
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[rgb(var(--color-secondary))] p-1.5">
@@ -68,7 +68,7 @@ export function Navbar({ lang }: { lang: Lang }) {
           <nav className="ml-auto hidden items-center lg:flex" aria-label={lang === 'th' ? 'เมนูหลัก' : 'Main navigation'}>
             {navItems.map((item) => (
               <div key={item.key} className="group relative">
-                <div className={`flex items-center rounded-lg ${isActive(item) ? 'bg-teal-50 text-[rgb(var(--color-primary-dark))]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'}`}>
+                <div className={`flex items-center rounded-lg border ${isActive(item) ? 'border-[rgb(var(--color-primary-border))] bg-[rgb(var(--color-primary-light))] text-[rgb(var(--color-primary-hover))]' : 'border-transparent text-slate-600 hover:bg-[rgb(var(--color-primary-light))] hover:text-[rgb(var(--color-primary-hover))]'}`}>
                   <Link href={item.href} className="px-3 py-2 text-sm font-medium" aria-current={isActive(item) ? 'page' : undefined}>{item.label}</Link>
                   {item.items && <button className="mr-1 flex h-9 w-7 items-center justify-center" aria-label={`${item.label} submenu`}><Chevron /></button>}
                 </div>
@@ -76,7 +76,7 @@ export function Navbar({ lang }: { lang: Lang }) {
                   <div className="invisible absolute left-0 top-full z-20 w-64 translate-y-2 pt-2 opacity-0 transition duration-150 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
                     <div className="rounded-xl border border-[rgb(var(--color-border))] bg-white p-2 shadow-[var(--shadow-md)]">
                       {item.items.map((sub) => (
-                        <Link key={sub.href} href={sub.href} className={`block rounded-lg px-3 py-2.5 text-sm ${pathname === sub.href ? 'bg-teal-50 font-semibold text-[rgb(var(--color-primary-dark))]' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'}`}>{sub.label}</Link>
+                        <Link key={sub.href} href={sub.href} className={`block rounded-lg border px-3 py-2.5 text-sm ${pathname === sub.href ? 'border-[rgb(var(--color-primary-border))] bg-[rgb(var(--color-primary-light))] font-semibold text-[rgb(var(--color-primary-hover))]' : 'border-transparent text-slate-600 hover:bg-[rgb(var(--color-primary-light))] hover:text-[rgb(var(--color-primary-hover))]'}`}>{sub.label}</Link>
                       ))}
                     </div>
                   </div>
@@ -107,12 +107,12 @@ export function Navbar({ lang }: { lang: Lang }) {
                 <details key={item.key} open={isActive(item)} className="group rounded-xl border border-[rgb(var(--color-border))] bg-white">
                   <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between px-4 py-3 font-medium text-[rgb(var(--color-secondary))]">{item.label}<Chevron /></summary>
                   <div className="border-t border-[rgb(var(--color-border))] bg-slate-50/70 p-2">
-                    <Link href={item.href} onClick={() => setMobileOpen(false)} className="block rounded-lg px-3 py-2 text-sm font-semibold text-[rgb(var(--color-primary-dark))]">{lang === 'th' ? 'ดูทั้งหมด' : 'View all'}</Link>
+                    <Link href={item.href} onClick={() => setMobileOpen(false)} className="block rounded-lg px-3 py-2 text-sm font-semibold text-[rgb(var(--color-primary-hover))]">{lang === 'th' ? 'ดูทั้งหมด' : 'View all'}</Link>
                     {item.items.map((sub) => <Link key={sub.href} href={sub.href} onClick={() => setMobileOpen(false)} className="block rounded-lg px-3 py-2.5 text-sm text-slate-600 hover:bg-white">{sub.label}</Link>)}
                   </div>
                 </details>
               ) : (
-                <Link key={item.key} href={item.href} onClick={() => setMobileOpen(false)} className={`flex min-h-12 items-center rounded-xl border px-4 py-3 font-medium ${isActive(item) ? 'border-teal-200 bg-teal-50 text-[rgb(var(--color-primary-dark))]' : 'border-[rgb(var(--color-border))] text-[rgb(var(--color-secondary))]'}`}>{item.label}</Link>
+                <Link key={item.key} href={item.href} onClick={() => setMobileOpen(false)} className={`flex min-h-12 items-center rounded-xl border px-4 py-3 font-medium ${isActive(item) ? 'border-[rgb(var(--color-primary-border))] bg-[rgb(var(--color-primary-light))] text-[rgb(var(--color-primary-hover))]' : 'border-[rgb(var(--color-border))] text-[rgb(var(--color-secondary))]'}`}>{item.label}</Link>
               ))}
             </nav>
             <Link href={switchLangPath} onClick={() => setMobileOpen(false)} className="btn-outline mt-5 w-full">
