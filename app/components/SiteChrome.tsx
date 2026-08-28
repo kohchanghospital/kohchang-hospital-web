@@ -6,7 +6,7 @@ import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import TopRightRibbon from './TopRightRibbon';
 
-export function SiteChrome({ lang, children }: { lang: Lang; children: React.ReactNode }) {
+export function SiteChrome({ lang, showMourningRibbon, children }: { lang: Lang; showMourningRibbon: boolean; children: React.ReactNode }) {
   const pathname = usePathname();
   const isAdmin = pathname.includes('/admin');
 
@@ -16,7 +16,7 @@ export function SiteChrome({ lang, children }: { lang: Lang; children: React.Rea
     <>
       <Navbar lang={lang} />
       <main id="main-content" className="min-w-0 flex-1">
-        <TopRightRibbon />
+        {showMourningRibbon && <TopRightRibbon />}
         {children}
       </main>
       <Footer lang={lang} />

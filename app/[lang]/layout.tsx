@@ -2,6 +2,7 @@ import { LanguageProvider } from '@/context/LanguageContext';
 import { Noto_Sans_Thai, Inter } from 'next/font/google';
 import { SiteChrome } from '../components/SiteChrome';
 import { Lang } from '@/i18n';
+import { getSiteSettings } from '../lib/site-settings';
 import '../globals.css';
 
 // ฟอนต์ไทย
@@ -29,12 +30,13 @@ export default async function LangLayout({
 }) {
   const resolvedParams = await params;
   const lang = resolvedParams.lang as Lang;
+  const siteSettings = await getSiteSettings();
 
   return (
     <html lang={lang} className={`${notoTh.variable} ${inter.variable}`}>
       <body className="flex min-h-screen flex-col">
         <LanguageProvider lang={lang}>
-          <SiteChrome lang={lang}>{children}</SiteChrome>
+          <SiteChrome lang={lang} showMourningRibbon={siteSettings.show_mourning_ribbon}>{children}</SiteChrome>
         </LanguageProvider>
       </body>
     </html>
