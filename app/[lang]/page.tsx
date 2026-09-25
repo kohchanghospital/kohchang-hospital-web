@@ -1,6 +1,7 @@
 import '../globals.css';
 import { languages, Lang } from '@/i18n';
-import Image from 'next/image'
+import Image from 'next/image';
+import HeroSlider, { type HeroSlide } from '../components/HeroSlider';
 import { Icons } from '@/app/icons/icons';
 
 type Announcement = {
@@ -48,6 +49,11 @@ async function getLatestKnowledges() {
 
 export default async function HomePage({ params }: { params: Promise<{ lang: string }> }) {
     const t = languages[((await params).lang as Lang)];
+    let slides: HeroSlide[] = [];
+    try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/hero-sliders`, { cache: 'no-store' });
+        if (response.ok) slides = (await response.json()).data;
+    } catch { /* Preserve the existing welcome hero when the API is unavailable. */ }
     const announcements = await getLatestAnnouncements();
     const knowledge = await getLatestKnowledges();
     const knowledges: Knowledge[] = knowledge.data.knowledge;
@@ -56,30 +62,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
     return (
         // ✅ UI IMPROVED
         <div>
-            <header className="relative isolate overflow-hidden bg-[rgb(var(--color-secondary))]">
-                <div className="absolute inset-0 -z-20 bg-[url('/images/kohchang.png')] bg-cover bg-center opacity-30" />
-                <div className="absolute inset-0 -z-10 bg-[linear-gradient(110deg,#211A3A_0%,#352650_45%,#4C2A6A_100%)]" />
-                <div className="container-page py-16 sm:py-20 lg:py-24">
-                <div className="max-w-3xl animate-soft-reveal">
-                    <span className="inline-flex rounded-lg border border-white/20 bg-white/10 px-3 py-1.5 text-sm font-medium text-[rgb(var(--color-primary-light))] backdrop-blur">
-                        Koh Chang Hospital
-                    </span>
-                    <h1 className="mt-5 text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
-                        {t.hos_name}
-                    </h1>
-                    <p className="mt-5 max-w-2xl text-base leading-8 text-slate-200 sm:text-lg">
-                        {t.sub_about}
-                    </p>
-                    <a
-                        href={`/${(await params).lang}/about`}
-                        className="btn-primary mt-7 !bg-white !text-[rgb(var(--color-secondary))] hover:!bg-[rgb(var(--color-primary-light))]"
-                    >
-                        {t.about}
-                        <Icons.ArrowRight className="ml-2" />
-                    </a>
-                </div>
-                </div>
-            </header>
+            <HeroSlider slides={slides} lang={(await params).lang as Lang} />
 
             <section className="container-page space-y-12 py-10 sm:py-14">
                 <ContentSection
@@ -96,7 +79,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                             className="group inline-block w-full text-sm text-[rgb(var(--color-primary))]"
                         >
                             <ArticleCard
-                                icon="/images/file_b.png"
+                                icon="/images/file_bb.png"
                                 title={item.title}
                                 createdAt={item.created_at}
                             />
@@ -118,7 +101,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                             className="group inline-block w-full text-sm text-[rgb(var(--color-primary))]"
                         >
                             <ArticleCard
-                                icon="/images/book_rb.png"
+                                icon="/images/book_r.webp"
                                 title={item.title}
                                 createdAt={item.created_at}
                             />
@@ -140,7 +123,7 @@ export default async function HomePage({ params }: { params: Promise<{ lang: str
                             className="group inline-block w-full text-sm text-[rgb(var(--color-primary))]"
                         >
                             <ArticleCard
-                                icon="/images/file_y.png"
+                                icon="/images/file_yy.png"
                                 title={item.title}
                                 createdAt={item.created_at}
                             />

@@ -4,7 +4,7 @@ export function PublicHero({ title, eyebrow, description, image }: { title: stri
   return (
     <header className="relative isolate overflow-hidden border-b border-[rgb(var(--color-border))] bg-[rgb(var(--color-secondary))]">
       {image && <div className="absolute inset-0 -z-20 bg-cover bg-center opacity-30" style={{ backgroundImage: `url('${image}')` }} />}
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(110deg,#211A3A_0%,#352650_45%,#4C2A6A_100%)]" />
+      <div className="absolute inset-0 -z-10 bg-[image:var(--gradient-brand)]" />
       <div className="container-page py-14 sm:py-16 lg:py-20">
         <div className="max-w-3xl animate-soft-reveal">
           {eyebrow && <p className="mb-3 text-sm font-semibold uppercase tracking-[.12em] text-[rgb(var(--color-primary-light))]">{eyebrow}</p>}

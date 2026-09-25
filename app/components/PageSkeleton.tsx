@@ -14,7 +14,7 @@ function LoadingShell({ children }: { children: React.ReactNode }) {
 function PublicHeroSkeleton({ description = false }: { description?: boolean }) {
     return (
         <header className="relative isolate overflow-hidden border-b border-[rgb(var(--color-border))] bg-[rgb(var(--color-secondary))]">
-            <div className="absolute inset-0 -z-10 bg-[linear-gradient(110deg,#211A3A_0%,#352650_45%,#4C2A6A_100%)]" />
+            <div className="absolute inset-0 -z-10 bg-[image:var(--gradient-brand)]" />
             <div className="container-page py-14 sm:py-16 lg:py-20">
                 <div className="max-w-3xl">
                     <Skeleton className="h-4 w-40 !bg-white/15" />
@@ -34,8 +34,8 @@ function PublicHeroSkeleton({ description = false }: { description?: boolean }) 
 function HomeHeroSkeleton() {
     return (
         <header className="relative isolate overflow-hidden bg-[rgb(var(--color-secondary))]">
-            <div className="absolute inset-0 -z-10 bg-[linear-gradient(110deg,#211A3A_0%,#352650_45%,#4C2A6A_100%)]" />
-            <div className="container-page py-16 sm:py-20 lg:py-24">
+            <div className="absolute inset-0 -z-10 bg-[image:var(--gradient-brand)]" />
+            <div className="container-page flex min-h-[460px] items-center py-16 min-[641px]:min-h-[540px] sm:py-20 lg:py-24">
                 <div className="max-w-3xl">
                     <Skeleton className="h-8 w-40 !bg-white/15" />
                     <Skeleton className="mt-5 h-9 w-72 max-w-full !bg-white/20 sm:h-10 sm:w-96 lg:h-12" />

@@ -1,3 +1,9 @@
+## Visitor tracking
+
+Set `ANALYTICS_INGEST_KEY` to the same private random key used by the Laravel API. Set `NEXT_PUBLIC_API_URL` to the API's `/api` base URL. The public site uses a random, first-party, HttpOnly `visitor_uuid` cookie lasting one year. Its server route forwards only that anonymous UUID to Laravel. Public pages send a heartbeat on navigation and every 60 seconds while visible. Admin pages do not mount the tracker. Deploy both applications with HTTPS so the cookie is marked Secure.
+
+The Admin Dashboard reads the protected Laravel analytics summary every 45 seconds. Analytics storage starts when the tracking migration is applied; there is no fabricated history.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

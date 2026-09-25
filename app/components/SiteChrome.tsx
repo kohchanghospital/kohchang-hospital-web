@@ -5,6 +5,7 @@ import { Lang } from '@/i18n';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import TopRightRibbon from './TopRightRibbon';
+import { VisitorHeartbeat } from './VisitorHeartbeat';
 
 export function SiteChrome({ lang, showMourningRibbon, children }: { lang: Lang; showMourningRibbon: boolean; children: React.ReactNode }) {
   const pathname = usePathname();
@@ -14,7 +15,8 @@ export function SiteChrome({ lang, showMourningRibbon, children }: { lang: Lang;
 
   return (
     <>
-      <Navbar lang={lang} />
+      <VisitorHeartbeat />
+      <Navbar key={pathname} lang={lang} />
       <main id="main-content" className="min-w-0 flex-1">
         {showMourningRibbon && <TopRightRibbon />}
         {children}

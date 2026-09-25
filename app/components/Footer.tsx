@@ -15,10 +15,17 @@ export function Footer({ lang }: { lang: Lang }) {
                 <div className="grid gap-8 lg:grid-cols-[1.25fr_0.75fr_1fr_1.1fr]">
                     <div className="space-y-4">
                         <Link href={`/${lang}/`} className="inline-block">
+                            <img
+                                src="/images/logo_name_b.png"
+                                alt={t.hos_name}
+                                className="h-19 w-auto"
+                            />
+                        </Link>
+                        {/* <Link href={`/${lang}/`} className="inline-block">
                             <h3 className="text-2xl font-bold text-[rgb(var(--color-foreground))] transition-colors duration-300 hover:text-[rgb(var(--color-primary))]">
                                 {t.hos_name}
                             </h3>
-                        </Link>
+                        </Link> */}
                         <p className="max-w-sm text-sm leading-7">
                             {t.sub_about}
                         </p>

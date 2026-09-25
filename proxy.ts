@@ -9,8 +9,24 @@ import type { NextRequest } from 'next/server';
  * - Unprefixed routes are redirected to the equivalent /th route.
  * - API, Next.js internals, images, the favicon, and file-like paths are skipped.
  */
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
     const { pathname } = request.nextUrl;
+
+    if (/^\/(th|en)\/admin(?:\/|$)/.test(pathname)) {
+        const apiBase = (process.env.NEXT_PUBLIC_API_URL || '').replace(/\/api\/?$/, '').replace(/\/$/, '');
+        const loginBase = process.env.ADMIN_LOGIN_URL || 'http://localhost:5173';
+        const headers = { cookie: request.headers.get('cookie') || '', accept: 'application/json', origin: request.nextUrl.origin };
+        if (apiBase) {
+            try {
+                const session = await fetch(`${apiBase}/two-factor/session`, { headers, cache: 'no-store', redirect: 'manual' });
+                if (session.ok) return;
+                const pending = await fetch(`${apiBase}/two-factor/challenge`, { headers, cache: 'no-store' });
+                const status = pending.ok ? await pending.json() as { next?: string } : {};
+                return NextResponse.redirect(new URL(status.next || '/login', loginBase));
+            } catch { /* Fail closed if the API is unavailable. */ }
+        }
+        return NextResponse.redirect(new URL('/login', loginBase));
+    }
 
     const pathnameHasLocale =
         pathname === '/th' ||
